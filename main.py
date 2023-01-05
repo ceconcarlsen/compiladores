@@ -78,7 +78,6 @@ def t_NUMERO_REAL(t):
 
 def t_NUMERO_INTEIRO(t):
     r'\d+'
-    t.value = int(t.value)
     if len(str(t.value)) <= 30:
         return t
     else:
@@ -171,13 +170,19 @@ text_scroll = Scrollbar(my_frame)
 text_scroll.pack(side=RIGHT, fill=Y)
 
 # Textbox
-my_text = Text(my_frame, width=97, height=25, font=(
+my_text = Text(my_frame, width=97, height=18, font=(
     "Helvetica", 16), selectbackground="blue",
     selectforeground="black", undo=True, yscrollcommand=text_scroll.set)
 my_text.pack()
 
+my_terminal = Text(my_frame, width=97, height=7, font=(
+    "Helvetica", 16), selectbackground="blue",
+    selectforeground="black", undo=False, yscrollcommand=text_scroll.set)
+my_terminal.pack()
+
 # Configure our scrollbar
 text_scroll.config(command=my_text.yview)
+text_scroll.config(command=my_terminal.yview)
 
 # Save As File
 def save_as_file():
@@ -218,7 +223,7 @@ def lexical_analysis():
         tok = lexer.token()
         if not tok: 
             break
-        my_text.insert(END, '\n' + tok.value + '---------' + tok.type)
+        my_terminal.insert(END, '\n' + tok.value + '---------' + tok.type)
 
 # Create menu
 my_menu = Menu(root)
@@ -241,9 +246,6 @@ status_bar.pack(fill=X, side=BOTTOM, ipady=5)
 
 
 root.mainloop()
-
-
-
 
 
  # ------------------------------------------------------------
