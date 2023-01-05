@@ -61,6 +61,7 @@ tokens = [
     'DOIS_PONTOS',
     'ABRE_PARENTESES',
     'FECHA_PARENTESTES',
+    'IDENTIFICADOR',
 ]
 
 reserved = {
@@ -150,7 +151,6 @@ def t_COMMENT(t):
  # 
  # ------------------------------------------------------------
 
-
 # Create New File 
 def new_file():
     my_text.delete("1.0", END)
@@ -213,9 +213,10 @@ def save_file():
     else: 
         save_as_file()
 
+lexer = lex.lex()
+
 # Lexical analysis
 def lexical_analysis():
-    lexer = lex.lex()
     lexer.input(my_text.get(1.0, END))
     
     while True:
@@ -244,11 +245,31 @@ status_bar = Label(root, text="Pronto       ", anchor=E)
 status_bar.pack(fill=X, side=BOTTOM, ipady=5)
 
 
-root.mainloop()
-
+# root.mainloop()
 
  # ------------------------------------------------------------
  # 
  # Parte de Analise Lexica 
  # 
  # ------------------------------------------------------------
+
+import ply.yacc as yacc
+
+def p_factor_num(p):
+    'factor : NUMERO_REAL'  # Aceita 12.5
+
+# Error rule for syntax errors
+def p_error(p):
+    print("Syntax error in input!")
+
+# Build the parser
+parser = yacc.yacc()
+
+while True:
+   try:
+       s = input('calc > ')
+   except EOFError:
+       break
+   if not s: continue
+   result = parser.parse(s)
+   print(result)
