@@ -5,6 +5,41 @@
  # ------------------------------------------------------------
 import ply.lex as lex
  
+from tkinter import *
+from tkinter import filedialog
+from tkinter import font
+
+root = Tk()
+root.title('Compiladores')
+root.geometry('1260x660')
+
+# Set variable for open file name 
+global open_status_name
+open_status_name = False
+
+# Main Frame
+my_frame = Frame(root)
+my_frame.pack(pady=5)
+
+# Scrollbar
+text_scroll = Scrollbar(my_frame)
+text_scroll.pack(side=RIGHT, fill=Y)
+
+# Textbox
+my_text = Text(my_frame, width=97, height=18, font=(
+    "Helvetica", 16), selectbackground="blue",
+    selectforeground="black", undo=True, yscrollcommand=text_scroll.set)
+my_text.pack()
+
+my_terminal = Text(my_frame, width=97, height=7, font=(
+    "Helvetica", 16), selectbackground="blue",
+    selectforeground="black", undo=False, yscrollcommand=text_scroll.set)
+my_terminal.pack()
+
+# Configure our scrollbar
+text_scroll.config(command=my_text.yview)
+text_scroll.config(command=my_terminal.yview)
+
  # List of token names.   This is always required
 tokens = [
     'NUMERO_REAL',
@@ -102,7 +137,7 @@ t_ignore  = ' \t'
  
  # Error handling rule
 def t_error(t):
-    print("Caracter invalido --------- '%s'" % t.value[0])
+    my_terminal.insert(END, "Caracter invalido --------- '%s'" % t.value[0])
     t.lexer.skip(1)
 
 def t_COMMENT(t):
@@ -115,19 +150,6 @@ def t_COMMENT(t):
  # 
  # ------------------------------------------------------------
 
-
-from tkinter import *
-from tkinter import filedialog
-from tkinter import font
-
-
-root = Tk()
-root.title('Compiladores')
-root.geometry('1260x660')
-
-# Set variable for open file name 
-global open_status_name
-open_status_name = False
 
 # Create New File 
 def new_file():
@@ -160,29 +182,6 @@ def open_file():
     my_text.insert(END, stuff)
     # Close the opened file 
     text_file.close()
-
-# Main Frame
-my_frame = Frame(root)
-my_frame.pack(pady=5)
-
-# Scrollbar
-text_scroll = Scrollbar(my_frame)
-text_scroll.pack(side=RIGHT, fill=Y)
-
-# Textbox
-my_text = Text(my_frame, width=97, height=18, font=(
-    "Helvetica", 16), selectbackground="blue",
-    selectforeground="black", undo=True, yscrollcommand=text_scroll.set)
-my_text.pack()
-
-my_terminal = Text(my_frame, width=97, height=7, font=(
-    "Helvetica", 16), selectbackground="blue",
-    selectforeground="black", undo=False, yscrollcommand=text_scroll.set)
-my_terminal.pack()
-
-# Configure our scrollbar
-text_scroll.config(command=my_text.yview)
-text_scroll.config(command=my_terminal.yview)
 
 # Save As File
 def save_as_file():
