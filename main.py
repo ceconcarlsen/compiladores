@@ -62,6 +62,7 @@ tokens = [
     'ABRE_PARENTESES',
     'FECHA_PARENTESTES',
     'IDENTIFICADOR',
+    'NUMERO_INTEIRO'
 ]
 
 reserved = {
@@ -255,12 +256,31 @@ status_bar.pack(fill=X, side=BOTTOM, ipady=5)
 
 import ply.yacc as yacc
 
-def p_factor_num(p):
+
+def p_expr_add(p):
+    'expr : name OPERADOR_ATRIBUICAO factor OPERADOR_SOMA factor'
+
+def p_expr_sub(p):
+    'expr : name OPERADOR_ATRIBUICAO factor OPERADOR_SUBTRACAO factor'
+
+def p_expr_mul(p):
+    'expr : name OPERADOR_ATRIBUICAO factor OPERADOR_MULTIPLICACAO factor'
+
+def p_expr_div(p):
+    'expr : name OPERADOR_ATRIBUICAO factor OPERADOR_DIVISAO factor'
+
+def p_factor_real(p):
     'factor : NUMERO_REAL'  # Aceita 12.5
+
+def p_factor_int(p):
+    'factor : NUMERO_INTEIRO'  # Aceita 12.5
+
+def p_name(p):
+    'name : IDENTIFICADOR'  # Aceita 12.5
 
 # Error rule for syntax errors
 def p_error(p):
-    print("Syntax error in input!")
+    print("Erro de Sintaxe")
 
 # Build the parser
 parser = yacc.yacc()
