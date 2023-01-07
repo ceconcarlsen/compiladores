@@ -49,18 +49,6 @@ tokens = [
     'OPERADOR_DIVISAO',
     'OPERADOR_ATRIBUICAO',
     'PONTO_VIRGULA',
-    'PONTO',
-    'MENOR_IGUAL',
-    'MAIOR_IGUAL',
-    'MENOR',
-    'MAIOR',
-    'IGUAL',
-    'DIFERENTE',
-    'ABRE_COMENTARIO',
-    'FECHA_COMENTARIO',
-    'DOIS_PONTOS',
-    'ABRE_PARENTESES',
-    'FECHA_PARENTESTES',
     'IDENTIFICADOR',
     'NUMERO_INTEIRO'
 ]
@@ -94,19 +82,7 @@ t_OPERADOR_MULTIPLICACAO   = r'\*'
 t_OPERADOR_DIVISAO  = r'/'
 t_OPERADOR_ATRIBUICAO  = r'\:='
 t_PONTO_VIRGULA  = r';'
-t_PONTO  = r'\.'
-t_MENOR_IGUAL  = r'<='
-t_MAIOR_IGUAL  = r'>='
-t_MENOR  = r'<'
-t_MAIOR  = r'>'
-t_DIFERENTE  = r'<>'
-t_IGUAL = r'='
-t_ABRE_COMENTARIO  = r'{'
-t_FECHA_COMENTARIO  = r'}'
-t_DOIS_PONTOS  = r':'
-t_ABRE_PARENTESES  = r'\('
-t_FECHA_PARENTESTES  = r'\)'
- 
+
  # A regular expression rule with some action code
 def t_NUMERO_REAL(t):
     r'([0-9]*)\.([0-9]*)'
@@ -148,6 +124,50 @@ def t_COMMENT(t):
 
  # ------------------------------------------------------------
  # 
+ # Parte de Analise Lexica 
+ # 
+ # ------------------------------------------------------------
+
+import ply.yacc as yacc
+
+def p_expr_add(p):
+    'expr : name OPERADOR_ATRIBUICAO factor OPERADOR_SOMA factor PONTO_VIRGULA'
+    return 'Sintaxe Correta \n'
+
+def p_expr_sub(p):
+    'expr : name OPERADOR_ATRIBUICAO factor OPERADOR_SUBTRACAO factor PONTO_VIRGULA'
+    return 'Sintaxe Correta \n'
+
+def p_expr_mul(p):
+    'expr : name OPERADOR_ATRIBUICAO factor OPERADOR_MULTIPLICACAO factor PONTO_VIRGULA'
+    return 'Sintaxe Correta \n'
+
+def p_expr_div(p):
+    'expr : name OPERADOR_ATRIBUICAO factor OPERADOR_DIVISAO factor PONTO_VIRGULA'
+    return 'Sintaxe Correta \n'
+
+def p_factor_real(p):
+    'factor : NUMERO_REAL'  # Aceita 12.5
+    return 'Sintaxe Correta \n'
+
+def p_factor_int(p):
+    'factor : NUMERO_INTEIRO'  # Aceita 12.5
+    return 'Sintaxe Correta \n'
+
+def p_name(p):
+    'name : IDENTIFICADOR'  # Aceita 12.5
+
+# Error rule for syntax errors
+def p_error(p):
+    print("Erro de Sintaxe")
+
+# Build the parser
+parser = yacc.yacc()
+
+
+
+ # ------------------------------------------------------------
+ # 
  # Parte do UI - TKINTER 
  # 
  # ------------------------------------------------------------
@@ -161,21 +181,14 @@ def new_file():
 # Open Files
 def open_file():
     my_text.delete("1.0", END)
-
-    # Grab filename
-    text_file = filedialog.askopenfilename(
-        initialdir="C:\\", title="Abrir arquivo",
-        filetypes=(("Text Files", "*.txt"), ()))
-    # Check to see if there is a file name
+    text_file = filedialog.askopenfilename(title="Abrir arquivo", filetypes=(("Text Files", "*.txt"),)) 
     if text_file:
-        # Make filename global so we can access it later 
         global open_status_name
         open_status_name = text_file
-    # Update Status Bars
     name = text_file
     status_bar.config(text=f'{name}         ')
     name = name.replace("C:/", "")
-    root.title(f'{name} - Compilador!')
+    root.title(f'{name}')
     # Open the file 
     text_file = open(text_file, 'r')
     stuff = text_file.read()
@@ -186,7 +199,7 @@ def open_file():
 
 # Save As File
 def save_as_file():
-    text_file = filedialog.asksaveasfilename(defaultextension='.*', initialdir="C:/", title="Salvar o arquivo", filetypes=("*.txt"))
+    text_file = filedialog.asksaveasfilename(defaultextension='.*', initialdir="C:/", title="Salvar o arquivo", filetypes=(("Text Files", "*.txt"),))
     if text_file: 
         # Update Status Bars 
         name = text_file
@@ -226,6 +239,11 @@ def lexical_analysis():
             break
         my_terminal.insert(END, '\n' + tok.value + '---------' + tok.type)
 
+def sintatic_analysis(): 
+    result = parser.parse(my_text.get(1.0, END))
+    # my_terminal.insert(END, result)
+    print(type(result) )
+
 # Create menu
 my_menu = Menu(root)
 root.config(menu=my_menu)
@@ -234,6 +252,7 @@ root.config(menu=my_menu)
 file_menu = Menu(my_menu, tearoff=FALSE)
 my_menu.add_cascade(label="Arquivo", menu=file_menu)
 my_menu.add_command(label="Analisador lexico", command=lexical_analysis)
+my_menu.add_command(label="Analisador sintatico", command=sintatic_analysis)
 file_menu.add_command(label="Novo", command=new_file)
 file_menu.add_command(label="Abrir", command=open_file)
 file_menu.add_command(label="Salvar", command=save_file)
@@ -246,50 +265,4 @@ status_bar = Label(root, text="Pronto       ", anchor=E)
 status_bar.pack(fill=X, side=BOTTOM, ipady=5)
 
 
-# root.mainloop()
-
- # ------------------------------------------------------------
- # 
- # Parte de Analise Lexica 
- # 
- # ------------------------------------------------------------
-
-import ply.yacc as yacc
-
-
-def p_expr_add(p):
-    'expr : name OPERADOR_ATRIBUICAO factor OPERADOR_SOMA factor'
-
-def p_expr_sub(p):
-    'expr : name OPERADOR_ATRIBUICAO factor OPERADOR_SUBTRACAO factor'
-
-def p_expr_mul(p):
-    'expr : name OPERADOR_ATRIBUICAO factor OPERADOR_MULTIPLICACAO factor'
-
-def p_expr_div(p):
-    'expr : name OPERADOR_ATRIBUICAO factor OPERADOR_DIVISAO factor'
-
-def p_factor_real(p):
-    'factor : NUMERO_REAL'  # Aceita 12.5
-
-def p_factor_int(p):
-    'factor : NUMERO_INTEIRO'  # Aceita 12.5
-
-def p_name(p):
-    'name : IDENTIFICADOR'  # Aceita 12.5
-
-# Error rule for syntax errors
-def p_error(p):
-    print("Erro de Sintaxe")
-
-# Build the parser
-parser = yacc.yacc()
-
-while True:
-   try:
-       s = input('calc > ')
-   except EOFError:
-       break
-   if not s: continue
-   result = parser.parse(s)
-   print(result)
+root.mainloop()
