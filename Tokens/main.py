@@ -1,0 +1,40 @@
+tokens = [
+    'NUMERO_REAL',
+    'OPERADOR_SOMA',
+    'OPERADOR_SUBTRACAO',
+    'OPERADOR_MULTIPLICACAO',
+    'OPERADOR_DIVISAO',
+    'OPERADOR_ATRIBUICAO',
+    'PONTO_VIRGULA',
+    'IDENTIFICADOR',
+    'NUMERO_INTEIRO'
+]
+
+reserved = {
+    'if' : 'PALAVRA RESERVADA - IF',
+    'then' : 'PALAVRA RESERVADA - THEN',
+    'else' : 'PALAVRA RESERVADA - ELSE',
+    'while' : 'PALAVRA RESERVADA - WHILE',
+    'program' : 'PALAVRA RESERVADA - PROGRAM',
+    'procedure' : 'PALAVRA RESERVADA - PROCEDURE',
+    'var' : 'PALAVRA RESERVADA - VAR',
+    'int' : 'PALAVRA RESERVADA - INT',
+    'boolean' : 'PALAVRA RESERVADA - BOOLEAN',
+    'read' : 'PALAVRA RESERVADA - READ',
+    'write' : 'PALAVRA RESERVADA - WRITE',
+    'true' : 'PALAVRA RESERVADA - TRUE',
+    'false' : 'PALAVRA RESERVADA - FALSE',
+    'begin' : 'PALAVRA RESERVADA - BEGIN',
+    'end' : 'PALAVRA RESERVADA - END',
+    'do' : 'PALAVRA RESERVADA - DO',
+    'and' : 'PALAVRA RESERVADA - AND',
+    'not' : 'PALAVRA RESERVADA - NOT',
+    'or' : 'PALAVRA RESERVADA - OR',
+ }
+ 
+t_OPERADOR_SOMA = r'\+'
+t_OPERADOR_SUBTRACAO = r'-'
+t_OPERADOR_MULTIPLICACAO   = r'\*'
+t_OPERADOR_DIVISAO  = r'/'
+t_OPERADOR_ATRIBUICAO  = r'\:='
+t_PONTO_VIRGULA  = r';'
