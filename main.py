@@ -242,7 +242,7 @@ def lexical_analysis():
 def sintatic_analysis(): 
     result = parser.parse(my_text.get(1.0, END))
     # my_terminal.insert(END, result)
-    print(type(result) )
+    print(type(result))
 
 # Create menu
 my_menu = Menu(root)

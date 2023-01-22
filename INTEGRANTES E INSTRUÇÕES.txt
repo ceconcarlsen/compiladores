@@ -1,0 +1,8 @@
+Integrantes: 
+> David Hiromi Ono
+> Gabriel Cecon Carlsen
+> Paulo Alexandre Da Silva Alves
+
+Para rodar: 
+ - É necessário ter instalado Tkinter 
+ - basta rodar o comando py main.py
