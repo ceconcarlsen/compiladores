@@ -57,9 +57,9 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "Compilador"))
-        self.analyzeButton.setText(_translate("MainWindow", "  Analyze"))
-        self.textOutput.setPlaceholderText(_translate("MainWindow", "Output"))
-        self.compileButton.setText(_translate("MainWindow", "  Compile"))
-        self.menuFile.setTitle(_translate("MainWindow", "File"))
-        self.actionOpen.setText(_translate("MainWindow", "Open"))
-        self.actionSave.setText(_translate("MainWindow", "Save"))
+        self.analyzeButton.setText(_translate("MainWindow", "  Analisador"))
+        self.textOutput.setPlaceholderText(_translate("MainWindow", "Saida"))
+        self.compileButton.setText(_translate("MainWindow", "  Compilador  "))
+        self.menuFile.setTitle(_translate("MainWindow", "Arquivo"))
+        self.actionOpen.setText(_translate("MainWindow", "Abrir"))
+        self.actionSave.setText(_translate("MainWindow", "Salvar"))

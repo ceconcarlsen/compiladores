@@ -364,38 +364,30 @@ class ExecWindow(Ui_MainWindow):
         self.highlighter2.outputRules()
 
         # Setting buttons properties
-        pixmap = QtGui.QPixmap("icons/analyze.png")
-        analyze_icon = QtGui.QIcon(pixmap)
-        self.analyzeButton.setIcon(analyze_icon)
-        self.analyzeButton.setIconSize(QSize(23, 23))
         self.analyzeButton.setStyleSheet(
         """
         QPushButton
         {
-        background-color: #D0D0D0;
+        background-color: #FFFF;
         border-radius: 15px;
         }
         QPushButton::hover
         {
-        background-color: #9A9A9A;
+        background-color: #D0D0D0;
         }
         """
         )
 
-        pixmap = QtGui.QPixmap("icons/build.png")
-        compile_icon = QtGui.QIcon(pixmap)
-        self.compileButton.setIcon(compile_icon)
-        self.compileButton.setIconSize(QSize(23, 23))
         self.compileButton.setStyleSheet(
         """
         QPushButton
         {
-        background-color: #D0D0D0;
+        background-color: #FFFF;
         border-radius: 15px;
         }
         QPushButton::hover
         {
-        background-color: #9A9A9A;
+        background-color: #D0D0D0;
         }
         """
         )
