@@ -1,0 +1,628 @@
+   yacc.py: 362:PLY: PARSE DEBUG START
+   yacc.py: 410:
+   yacc.py: 411:State  : 0
+   yacc.py: 434:Stack  : . LexToken(PROGRAM,'program',1,0)
+   yacc.py: 445:Action : Shift and goto state 2
+   yacc.py: 410:
+   yacc.py: 411:State  : 2
+   yacc.py: 434:Stack  : PROGRAM . LexToken(ID,'correto',1,8)
+   yacc.py: 445:Action : Shift and goto state 3
+   yacc.py: 410:
+   yacc.py: 411:State  : 3
+   yacc.py: 434:Stack  : PROGRAM ID . LexToken(FIM_LINHA,';',1,15)
+   yacc.py: 445:Action : Shift and goto state 4
+   yacc.py: 410:
+   yacc.py: 411:State  : 4
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA . LexToken(INT,'int',2,17)
+   yacc.py: 473:Action : Reduce rule [new_scope -> <empty>] with [] and goto state 6
+   yacc.py: 548:Result : <NoneType @ 0x7ffefd7917f8> (None)
+   yacc.py: 410:
+   yacc.py: 411:State  : 6
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope . LexToken(INT,'int',2,17)
+   yacc.py: 445:Action : Shift and goto state 13
+   yacc.py: 410:
+   yacc.py: 411:State  : 13
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope INT . LexToken(ID,'a',2,21)
+   yacc.py: 469:Action : Reduce rule [tipo_simples -> INT] with ['int'] and goto state 12
+   yacc.py: 506:Result : <str @ 0x2290da5e130> ('int')
+   yacc.py: 410:
+   yacc.py: 411:State  : 12
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples . LexToken(ID,'a',2,21)
+   yacc.py: 445:Action : Shift and goto state 37
+   yacc.py: 410:
+   yacc.py: 411:State  : 37
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples ID . LexToken(SEPARADOR,',',2,22)
+   yacc.py: 469:Action : Reduce rule [variavel -> ID] with ['a'] and goto state 30
+   yacc.py: 506:Result : <str @ 0x2290a15a4f0> ('a')
+   yacc.py: 410:
+   yacc.py: 411:State  : 30
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples variavel . LexToken(SEPARADOR,',',2,22)
+   yacc.py: 469:Action : Reduce rule [fator -> variavel] with ['a'] and goto state 28
+   yacc.py: 506:Result : <str @ 0x2290a15a4f0> ('a')
+   yacc.py: 410:
+   yacc.py: 411:State  : 28
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples fator . LexToken(SEPARADOR,',',2,22)
+   yacc.py: 469:Action : Reduce rule [termo -> fator] with ['a'] and goto state 27
+   yacc.py: 506:Result : <str @ 0x2290a15a4f0> ('a')
+   yacc.py: 410:
+   yacc.py: 411:State  : 27
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples termo . LexToken(SEPARADOR,',',2,22)
+   yacc.py: 469:Action : Reduce rule [expressao_simples -> termo] with ['a'] and goto state 26
+   yacc.py: 506:Result : <str @ 0x2290a15a4f0> ('a')
+   yacc.py: 410:
+   yacc.py: 411:State  : 26
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao_simples . LexToken(SEPARADOR,',',2,22)
+   yacc.py: 469:Action : Reduce rule [expressao -> expressao_simples] with ['a'] and goto state 24
+   yacc.py: 506:Result : <str @ 0x2290a15a4f0> ('a')
+   yacc.py: 410:
+   yacc.py: 411:State  : 24
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao . LexToken(SEPARADOR,',',2,22)
+   yacc.py: 445:Action : Shift and goto state 54
+   yacc.py: 410:
+   yacc.py: 411:State  : 54
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR . LexToken(ID,'b',2,24)
+   yacc.py: 445:Action : Shift and goto state 37
+   yacc.py: 410:
+   yacc.py: 411:State  : 37
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR ID . LexToken(SEPARADOR,',',2,25)
+   yacc.py: 469:Action : Reduce rule [variavel -> ID] with ['b'] and goto state 30
+   yacc.py: 506:Result : <str @ 0x2290a11d0f0> ('b')
+   yacc.py: 410:
+   yacc.py: 411:State  : 30
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR variavel . LexToken(SEPARADOR,',',2,25)
+   yacc.py: 469:Action : Reduce rule [fator -> variavel] with ['b'] and goto state 28
+   yacc.py: 506:Result : <str @ 0x2290a11d0f0> ('b')
+   yacc.py: 410:
+   yacc.py: 411:State  : 28
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR fator . LexToken(SEPARADOR,',',2,25)
+   yacc.py: 469:Action : Reduce rule [termo -> fator] with ['b'] and goto state 27
+   yacc.py: 506:Result : <str @ 0x2290a11d0f0> ('b')
+   yacc.py: 410:
+   yacc.py: 411:State  : 27
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR termo . LexToken(SEPARADOR,',',2,25)
+   yacc.py: 469:Action : Reduce rule [expressao_simples -> termo] with ['b'] and goto state 26
+   yacc.py: 506:Result : <str @ 0x2290a11d0f0> ('b')
+   yacc.py: 410:
+   yacc.py: 411:State  : 26
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR expressao_simples . LexToken(SEPARADOR,',',2,25)
+   yacc.py: 469:Action : Reduce rule [expressao -> expressao_simples] with ['b'] and goto state 24
+   yacc.py: 506:Result : <str @ 0x2290a11d0f0> ('b')
+   yacc.py: 410:
+   yacc.py: 411:State  : 24
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR expressao . LexToken(SEPARADOR,',',2,25)
+   yacc.py: 445:Action : Shift and goto state 54
+   yacc.py: 410:
+   yacc.py: 411:State  : 54
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR expressao SEPARADOR . LexToken(ID,'c',2,27)
+   yacc.py: 445:Action : Shift and goto state 37
+   yacc.py: 410:
+   yacc.py: 411:State  : 37
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR expressao SEPARADOR ID . LexToken(SEPARADOR,',',2,28)
+   yacc.py: 469:Action : Reduce rule [variavel -> ID] with ['c'] and goto state 30
+   yacc.py: 506:Result : <str @ 0x2290a10d730> ('c')
+   yacc.py: 410:
+   yacc.py: 411:State  : 30
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR expressao SEPARADOR variavel . LexToken(SEPARADOR,',',2,28)
+   yacc.py: 469:Action : Reduce rule [fator -> variavel] with ['c'] and goto state 28
+   yacc.py: 506:Result : <str @ 0x2290a10d730> ('c')
+   yacc.py: 410:
+   yacc.py: 411:State  : 28
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR expressao SEPARADOR fator . LexToken(SEPARADOR,',',2,28)
+   yacc.py: 469:Action : Reduce rule [termo -> fator] with ['c'] and goto state 27
+   yacc.py: 506:Result : <str @ 0x2290a10d730> ('c')
+   yacc.py: 410:
+   yacc.py: 411:State  : 27
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR expressao SEPARADOR termo . LexToken(SEPARADOR,',',2,28)
+   yacc.py: 469:Action : Reduce rule [expressao_simples -> termo] with ['c'] and goto state 26
+   yacc.py: 506:Result : <str @ 0x2290a10d730> ('c')
+   yacc.py: 410:
+   yacc.py: 411:State  : 26
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR expressao SEPARADOR expressao_simples . LexToken(SEPARADOR,',',2,28)
+   yacc.py: 469:Action : Reduce rule [expressao -> expressao_simples] with ['c'] and goto state 24
+   yacc.py: 506:Result : <str @ 0x2290a10d730> ('c')
+   yacc.py: 410:
+   yacc.py: 411:State  : 24
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR expressao SEPARADOR expressao . LexToken(SEPARADOR,',',2,28)
+   yacc.py: 445:Action : Shift and goto state 54
+   yacc.py: 410:
+   yacc.py: 411:State  : 54
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR expressao SEPARADOR expressao SEPARADOR . LexToken(ID,'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',2,30)
+   yacc.py: 445:Action : Shift and goto state 37
+   yacc.py: 410:
+   yacc.py: 411:State  : 37
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR expressao SEPARADOR expressao SEPARADOR ID . LexToken(ID,'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',2,81)
+   yacc.py: 579:Error  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR expressao SEPARADOR expressao SEPARADOR ID . LexToken(ID,'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',2,81)
+   yacc.py: 410:
+   yacc.py: 411:State  : 37
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR expressao SEPARADOR expressao SEPARADOR ID . $end
+   yacc.py: 579:Error  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR expressao SEPARADOR expressao SEPARADOR ID . $end
+   yacc.py: 362:PLY: PARSE DEBUG START
+   yacc.py: 410:
+   yacc.py: 411:State  : 0
+   yacc.py: 434:Stack  : . LexToken(PROGRAM,'program',1,0)
+   yacc.py: 445:Action : Shift and goto state 2
+   yacc.py: 410:
+   yacc.py: 411:State  : 2
+   yacc.py: 434:Stack  : PROGRAM . LexToken(ID,'correto',1,8)
+   yacc.py: 445:Action : Shift and goto state 3
+   yacc.py: 410:
+   yacc.py: 411:State  : 3
+   yacc.py: 434:Stack  : PROGRAM ID . LexToken(FIM_LINHA,';',1,15)
+   yacc.py: 445:Action : Shift and goto state 4
+   yacc.py: 410:
+   yacc.py: 411:State  : 4
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA . LexToken(INT,'int',2,17)
+   yacc.py: 473:Action : Reduce rule [new_scope -> <empty>] with [] and goto state 6
+   yacc.py: 548:Result : <NoneType @ 0x7ffefd7917f8> (None)
+   yacc.py: 410:
+   yacc.py: 411:State  : 6
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope . LexToken(INT,'int',2,17)
+   yacc.py: 445:Action : Shift and goto state 13
+   yacc.py: 410:
+   yacc.py: 411:State  : 13
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope INT . LexToken(ID,'a',2,21)
+   yacc.py: 469:Action : Reduce rule [tipo_simples -> INT] with ['int'] and goto state 12
+   yacc.py: 506:Result : <str @ 0x2290da474b0> ('int')
+   yacc.py: 410:
+   yacc.py: 411:State  : 12
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples . LexToken(ID,'a',2,21)
+   yacc.py: 445:Action : Shift and goto state 37
+   yacc.py: 410:
+   yacc.py: 411:State  : 37
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples ID . LexToken(SEPARADOR,',',2,22)
+   yacc.py: 469:Action : Reduce rule [variavel -> ID] with ['a'] and goto state 30
+   yacc.py: 506:Result : <str @ 0x2290a15a4f0> ('a')
+   yacc.py: 410:
+   yacc.py: 411:State  : 30
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples variavel . LexToken(SEPARADOR,',',2,22)
+   yacc.py: 469:Action : Reduce rule [fator -> variavel] with ['a'] and goto state 28
+   yacc.py: 506:Result : <str @ 0x2290a15a4f0> ('a')
+   yacc.py: 410:
+   yacc.py: 411:State  : 28
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples fator . LexToken(SEPARADOR,',',2,22)
+   yacc.py: 469:Action : Reduce rule [termo -> fator] with ['a'] and goto state 27
+   yacc.py: 506:Result : <str @ 0x2290a15a4f0> ('a')
+   yacc.py: 410:
+   yacc.py: 411:State  : 27
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples termo . LexToken(SEPARADOR,',',2,22)
+   yacc.py: 469:Action : Reduce rule [expressao_simples -> termo] with ['a'] and goto state 26
+   yacc.py: 506:Result : <str @ 0x2290a15a4f0> ('a')
+   yacc.py: 410:
+   yacc.py: 411:State  : 26
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao_simples . LexToken(SEPARADOR,',',2,22)
+   yacc.py: 469:Action : Reduce rule [expressao -> expressao_simples] with ['a'] and goto state 24
+   yacc.py: 506:Result : <str @ 0x2290a15a4f0> ('a')
+   yacc.py: 410:
+   yacc.py: 411:State  : 24
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao . LexToken(SEPARADOR,',',2,22)
+   yacc.py: 445:Action : Shift and goto state 54
+   yacc.py: 410:
+   yacc.py: 411:State  : 54
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR . LexToken(ID,'b',2,24)
+   yacc.py: 445:Action : Shift and goto state 37
+   yacc.py: 410:
+   yacc.py: 411:State  : 37
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR ID . LexToken(SEPARADOR,',',2,25)
+   yacc.py: 469:Action : Reduce rule [variavel -> ID] with ['b'] and goto state 30
+   yacc.py: 506:Result : <str @ 0x2290a11d0f0> ('b')
+   yacc.py: 410:
+   yacc.py: 411:State  : 30
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR variavel . LexToken(SEPARADOR,',',2,25)
+   yacc.py: 469:Action : Reduce rule [fator -> variavel] with ['b'] and goto state 28
+   yacc.py: 506:Result : <str @ 0x2290a11d0f0> ('b')
+   yacc.py: 410:
+   yacc.py: 411:State  : 28
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR fator . LexToken(SEPARADOR,',',2,25)
+   yacc.py: 469:Action : Reduce rule [termo -> fator] with ['b'] and goto state 27
+   yacc.py: 506:Result : <str @ 0x2290a11d0f0> ('b')
+   yacc.py: 410:
+   yacc.py: 411:State  : 27
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR termo . LexToken(SEPARADOR,',',2,25)
+   yacc.py: 469:Action : Reduce rule [expressao_simples -> termo] with ['b'] and goto state 26
+   yacc.py: 506:Result : <str @ 0x2290a11d0f0> ('b')
+   yacc.py: 410:
+   yacc.py: 411:State  : 26
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR expressao_simples . LexToken(SEPARADOR,',',2,25)
+   yacc.py: 469:Action : Reduce rule [expressao -> expressao_simples] with ['b'] and goto state 24
+   yacc.py: 506:Result : <str @ 0x2290a11d0f0> ('b')
+   yacc.py: 410:
+   yacc.py: 411:State  : 24
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR expressao . LexToken(SEPARADOR,',',2,25)
+   yacc.py: 445:Action : Shift and goto state 54
+   yacc.py: 410:
+   yacc.py: 411:State  : 54
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR expressao SEPARADOR . LexToken(ID,'c',2,27)
+   yacc.py: 445:Action : Shift and goto state 37
+   yacc.py: 410:
+   yacc.py: 411:State  : 37
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR expressao SEPARADOR ID . LexToken(SEPARADOR,',',2,28)
+   yacc.py: 469:Action : Reduce rule [variavel -> ID] with ['c'] and goto state 30
+   yacc.py: 506:Result : <str @ 0x2290a10d730> ('c')
+   yacc.py: 410:
+   yacc.py: 411:State  : 30
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR expressao SEPARADOR variavel . LexToken(SEPARADOR,',',2,28)
+   yacc.py: 469:Action : Reduce rule [fator -> variavel] with ['c'] and goto state 28
+   yacc.py: 506:Result : <str @ 0x2290a10d730> ('c')
+   yacc.py: 410:
+   yacc.py: 411:State  : 28
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR expressao SEPARADOR fator . LexToken(SEPARADOR,',',2,28)
+   yacc.py: 469:Action : Reduce rule [termo -> fator] with ['c'] and goto state 27
+   yacc.py: 506:Result : <str @ 0x2290a10d730> ('c')
+   yacc.py: 410:
+   yacc.py: 411:State  : 27
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR expressao SEPARADOR termo . LexToken(SEPARADOR,',',2,28)
+   yacc.py: 469:Action : Reduce rule [expressao_simples -> termo] with ['c'] and goto state 26
+   yacc.py: 506:Result : <str @ 0x2290a10d730> ('c')
+   yacc.py: 410:
+   yacc.py: 411:State  : 26
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR expressao SEPARADOR expressao_simples . LexToken(SEPARADOR,',',2,28)
+   yacc.py: 469:Action : Reduce rule [expressao -> expressao_simples] with ['c'] and goto state 24
+   yacc.py: 506:Result : <str @ 0x2290a10d730> ('c')
+   yacc.py: 410:
+   yacc.py: 411:State  : 24
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR expressao SEPARADOR expressao . LexToken(SEPARADOR,',',2,28)
+   yacc.py: 445:Action : Shift and goto state 54
+   yacc.py: 410:
+   yacc.py: 411:State  : 54
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR expressao SEPARADOR expressao SEPARADOR . LexToken(BOOLEAN,'boolean',3,31)
+   yacc.py: 579:Error  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR expressao SEPARADOR expressao SEPARADOR . LexToken(BOOLEAN,'boolean',3,31)
+   yacc.py: 410:
+   yacc.py: 411:State  : 54
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR expressao SEPARADOR expressao SEPARADOR . $end
+   yacc.py: 579:Error  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR expressao SEPARADOR expressao SEPARADOR . $end
+   yacc.py: 362:PLY: PARSE DEBUG START
+   yacc.py: 410:
+   yacc.py: 411:State  : 0
+   yacc.py: 434:Stack  : . LexToken(PROGRAM,'program',1,0)
+   yacc.py: 445:Action : Shift and goto state 2
+   yacc.py: 410:
+   yacc.py: 411:State  : 2
+   yacc.py: 434:Stack  : PROGRAM . LexToken(ID,'correto',1,8)
+   yacc.py: 445:Action : Shift and goto state 3
+   yacc.py: 410:
+   yacc.py: 411:State  : 3
+   yacc.py: 434:Stack  : PROGRAM ID . LexToken(FIM_LINHA,';',1,15)
+   yacc.py: 445:Action : Shift and goto state 4
+   yacc.py: 410:
+   yacc.py: 411:State  : 4
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA . LexToken(INT,'int',2,17)
+   yacc.py: 473:Action : Reduce rule [new_scope -> <empty>] with [] and goto state 6
+   yacc.py: 548:Result : <NoneType @ 0x7ffefd7917f8> (None)
+   yacc.py: 410:
+   yacc.py: 411:State  : 6
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope . LexToken(INT,'int',2,17)
+   yacc.py: 445:Action : Shift and goto state 13
+   yacc.py: 410:
+   yacc.py: 411:State  : 13
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope INT . LexToken(ID,'a',2,21)
+   yacc.py: 469:Action : Reduce rule [tipo_simples -> INT] with ['int'] and goto state 12
+   yacc.py: 506:Result : <str @ 0x2290da1b3b0> ('int')
+   yacc.py: 410:
+   yacc.py: 411:State  : 12
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples . LexToken(ID,'a',2,21)
+   yacc.py: 445:Action : Shift and goto state 37
+   yacc.py: 410:
+   yacc.py: 411:State  : 37
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples ID . LexToken(SEPARADOR,',',2,22)
+   yacc.py: 469:Action : Reduce rule [variavel -> ID] with ['a'] and goto state 30
+   yacc.py: 506:Result : <str @ 0x2290a15a4f0> ('a')
+   yacc.py: 410:
+   yacc.py: 411:State  : 30
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples variavel . LexToken(SEPARADOR,',',2,22)
+   yacc.py: 469:Action : Reduce rule [fator -> variavel] with ['a'] and goto state 28
+   yacc.py: 506:Result : <str @ 0x2290a15a4f0> ('a')
+   yacc.py: 410:
+   yacc.py: 411:State  : 28
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples fator . LexToken(SEPARADOR,',',2,22)
+   yacc.py: 469:Action : Reduce rule [termo -> fator] with ['a'] and goto state 27
+   yacc.py: 506:Result : <str @ 0x2290a15a4f0> ('a')
+   yacc.py: 410:
+   yacc.py: 411:State  : 27
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples termo . LexToken(SEPARADOR,',',2,22)
+   yacc.py: 469:Action : Reduce rule [expressao_simples -> termo] with ['a'] and goto state 26
+   yacc.py: 506:Result : <str @ 0x2290a15a4f0> ('a')
+   yacc.py: 410:
+   yacc.py: 411:State  : 26
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao_simples . LexToken(SEPARADOR,',',2,22)
+   yacc.py: 469:Action : Reduce rule [expressao -> expressao_simples] with ['a'] and goto state 24
+   yacc.py: 506:Result : <str @ 0x2290a15a4f0> ('a')
+   yacc.py: 410:
+   yacc.py: 411:State  : 24
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao . LexToken(SEPARADOR,',',2,22)
+   yacc.py: 445:Action : Shift and goto state 54
+   yacc.py: 410:
+   yacc.py: 411:State  : 54
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR . LexToken(ID,'b',2,24)
+   yacc.py: 445:Action : Shift and goto state 37
+   yacc.py: 410:
+   yacc.py: 411:State  : 37
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR ID . LexToken(SEPARADOR,',',2,25)
+   yacc.py: 469:Action : Reduce rule [variavel -> ID] with ['b'] and goto state 30
+   yacc.py: 506:Result : <str @ 0x2290a11d0f0> ('b')
+   yacc.py: 410:
+   yacc.py: 411:State  : 30
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR variavel . LexToken(SEPARADOR,',',2,25)
+   yacc.py: 469:Action : Reduce rule [fator -> variavel] with ['b'] and goto state 28
+   yacc.py: 506:Result : <str @ 0x2290a11d0f0> ('b')
+   yacc.py: 410:
+   yacc.py: 411:State  : 28
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR fator . LexToken(SEPARADOR,',',2,25)
+   yacc.py: 469:Action : Reduce rule [termo -> fator] with ['b'] and goto state 27
+   yacc.py: 506:Result : <str @ 0x2290a11d0f0> ('b')
+   yacc.py: 410:
+   yacc.py: 411:State  : 27
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR termo . LexToken(SEPARADOR,',',2,25)
+   yacc.py: 469:Action : Reduce rule [expressao_simples -> termo] with ['b'] and goto state 26
+   yacc.py: 506:Result : <str @ 0x2290a11d0f0> ('b')
+   yacc.py: 410:
+   yacc.py: 411:State  : 26
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR expressao_simples . LexToken(SEPARADOR,',',2,25)
+   yacc.py: 469:Action : Reduce rule [expressao -> expressao_simples] with ['b'] and goto state 24
+   yacc.py: 506:Result : <str @ 0x2290a11d0f0> ('b')
+   yacc.py: 410:
+   yacc.py: 411:State  : 24
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR expressao . LexToken(SEPARADOR,',',2,25)
+   yacc.py: 445:Action : Shift and goto state 54
+   yacc.py: 410:
+   yacc.py: 411:State  : 54
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR expressao SEPARADOR . LexToken(ID,'c',2,27)
+   yacc.py: 445:Action : Shift and goto state 37
+   yacc.py: 410:
+   yacc.py: 411:State  : 37
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR expressao SEPARADOR ID . LexToken(FIM_LINHA,';',2,28)
+   yacc.py: 469:Action : Reduce rule [variavel -> ID] with ['c'] and goto state 30
+   yacc.py: 506:Result : <str @ 0x2290a10d730> ('c')
+   yacc.py: 410:
+   yacc.py: 411:State  : 30
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR expressao SEPARADOR variavel . LexToken(FIM_LINHA,';',2,28)
+   yacc.py: 469:Action : Reduce rule [fator -> variavel] with ['c'] and goto state 28
+   yacc.py: 506:Result : <str @ 0x2290a10d730> ('c')
+   yacc.py: 410:
+   yacc.py: 411:State  : 28
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR expressao SEPARADOR fator . LexToken(FIM_LINHA,';',2,28)
+   yacc.py: 469:Action : Reduce rule [termo -> fator] with ['c'] and goto state 27
+   yacc.py: 506:Result : <str @ 0x2290a10d730> ('c')
+   yacc.py: 410:
+   yacc.py: 411:State  : 27
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR expressao SEPARADOR termo . LexToken(FIM_LINHA,';',2,28)
+   yacc.py: 469:Action : Reduce rule [expressao_simples -> termo] with ['c'] and goto state 26
+   yacc.py: 506:Result : <str @ 0x2290a10d730> ('c')
+   yacc.py: 410:
+   yacc.py: 411:State  : 26
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR expressao SEPARADOR expressao_simples . LexToken(FIM_LINHA,';',2,28)
+   yacc.py: 469:Action : Reduce rule [expressao -> expressao_simples] with ['c'] and goto state 24
+   yacc.py: 506:Result : <str @ 0x2290a10d730> ('c')
+   yacc.py: 410:
+   yacc.py: 411:State  : 24
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR expressao SEPARADOR expressao . LexToken(FIM_LINHA,';',2,28)
+   yacc.py: 473:Action : Reduce rule [empty -> <empty>] with [] and goto state 55
+   yacc.py: 548:Result : <NoneType @ 0x7ffefd7917f8> (None)
+   yacc.py: 410:
+   yacc.py: 411:State  : 55
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR expressao SEPARADOR expressao empty . LexToken(FIM_LINHA,';',2,28)
+   yacc.py: 469:Action : Reduce rule [mais_parametros -> empty] with [None] and goto state 53
+   yacc.py: 506:Result : <NoneType @ 0x7ffefd7917f8> (None)
+   yacc.py: 410:
+   yacc.py: 411:State  : 53
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR expressao SEPARADOR expressao mais_parametros . LexToken(FIM_LINHA,';',2,28)
+   yacc.py: 469:Action : Reduce rule [lista_de_parametros -> expressao mais_parametros] with ['c',None] and goto state 85
+   yacc.py: 506:Result : <list @ 0x2290da1af80> (['c'])
+   yacc.py: 410:
+   yacc.py: 411:State  : 85
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR expressao SEPARADOR lista_de_parametros . LexToken(FIM_LINHA,';',2,28)
+   yacc.py: 469:Action : Reduce rule [mais_parametros -> SEPARADOR lista_de_parametros] with [',',['c']] and goto state 53
+   yacc.py: 506:Result : <list @ 0x2290da1af80> (['c'])
+   yacc.py: 410:
+   yacc.py: 411:State  : 53
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR expressao mais_parametros . LexToken(FIM_LINHA,';',2,28)
+   yacc.py: 469:Action : Reduce rule [lista_de_parametros -> expressao mais_parametros] with ['b',['c']] and goto state 85
+   yacc.py: 506:Result : <list @ 0x2290da1af40> (['b', 'c'])
+   yacc.py: 410:
+   yacc.py: 411:State  : 85
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao SEPARADOR lista_de_parametros . LexToken(FIM_LINHA,';',2,28)
+   yacc.py: 469:Action : Reduce rule [mais_parametros -> SEPARADOR lista_de_parametros] with [',',['b', 'c']] and goto state 53
+   yacc.py: 506:Result : <list @ 0x2290da1af40> (['b', 'c'])
+   yacc.py: 410:
+   yacc.py: 411:State  : 53
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples expressao mais_parametros . LexToken(FIM_LINHA,';',2,28)
+   yacc.py: 469:Action : Reduce rule [lista_de_parametros -> expressao mais_parametros] with ['a',['b', 'c']] and goto state 23
+   yacc.py: 506:Result : <list @ 0x2290da1aec0> (['a', 'b', 'c'])
+   yacc.py: 410:
+   yacc.py: 411:State  : 23
+   yacc.py: 430:Defaulted state 23: Reduce using 6
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope tipo_simples lista_de_parametros . LexToken(FIM_LINHA,';',2,28)
+   yacc.py: 469:Action : Reduce rule [declaracao_de_variaveis -> tipo_simples lista_de_parametros] with ['int',['a', 'b', 'c']] and goto state 10
+   yacc.py: 506:Result : <tuple @ 0x2290da44f80> (('int', ['a', 'b', 'c']))
+   yacc.py: 410:
+   yacc.py: 411:State  : 10
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope declaracao_de_variaveis . LexToken(FIM_LINHA,';',2,28)
+   yacc.py: 445:Action : Shift and goto state 22
+   yacc.py: 410:
+   yacc.py: 411:State  : 22
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope declaracao_de_variaveis FIM_LINHA . LexToken(BOOLEAN,'boolean',3,30)
+   yacc.py: 445:Action : Shift and goto state 15
+   yacc.py: 410:
+   yacc.py: 411:State  : 15
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope declaracao_de_variaveis FIM_LINHA BOOLEAN . LexToken(ID,'d',3,38)
+   yacc.py: 469:Action : Reduce rule [tipo_simples -> BOOLEAN] with ['boolean'] and goto state 12
+   yacc.py: 506:Result : <str @ 0x2290da1b2f0> ('boolean')
+   yacc.py: 410:
+   yacc.py: 411:State  : 12
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope declaracao_de_variaveis FIM_LINHA tipo_simples . LexToken(ID,'d',3,38)
+   yacc.py: 445:Action : Shift and goto state 37
+   yacc.py: 410:
+   yacc.py: 411:State  : 37
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope declaracao_de_variaveis FIM_LINHA tipo_simples ID . LexToken(SEPARADOR,',',3,39)
+   yacc.py: 469:Action : Reduce rule [variavel -> ID] with ['d'] and goto state 30
+   yacc.py: 506:Result : <str @ 0x2290a10d630> ('d')
+   yacc.py: 410:
+   yacc.py: 411:State  : 30
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope declaracao_de_variaveis FIM_LINHA tipo_simples variavel . LexToken(SEPARADOR,',',3,39)
+   yacc.py: 469:Action : Reduce rule [fator -> variavel] with ['d'] and goto state 28
+   yacc.py: 506:Result : <str @ 0x2290a10d630> ('d')
+   yacc.py: 410:
+   yacc.py: 411:State  : 28
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope declaracao_de_variaveis FIM_LINHA tipo_simples fator . LexToken(SEPARADOR,',',3,39)
+   yacc.py: 469:Action : Reduce rule [termo -> fator] with ['d'] and goto state 27
+   yacc.py: 506:Result : <str @ 0x2290a10d630> ('d')
+   yacc.py: 410:
+   yacc.py: 411:State  : 27
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope declaracao_de_variaveis FIM_LINHA tipo_simples termo . LexToken(SEPARADOR,',',3,39)
+   yacc.py: 469:Action : Reduce rule [expressao_simples -> termo] with ['d'] and goto state 26
+   yacc.py: 506:Result : <str @ 0x2290a10d630> ('d')
+   yacc.py: 410:
+   yacc.py: 411:State  : 26
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope declaracao_de_variaveis FIM_LINHA tipo_simples expressao_simples . LexToken(SEPARADOR,',',3,39)
+   yacc.py: 469:Action : Reduce rule [expressao -> expressao_simples] with ['d'] and goto state 24
+   yacc.py: 506:Result : <str @ 0x2290a10d630> ('d')
+   yacc.py: 410:
+   yacc.py: 411:State  : 24
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope declaracao_de_variaveis FIM_LINHA tipo_simples expressao . LexToken(SEPARADOR,',',3,39)
+   yacc.py: 445:Action : Shift and goto state 54
+   yacc.py: 410:
+   yacc.py: 411:State  : 54
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope declaracao_de_variaveis FIM_LINHA tipo_simples expressao SEPARADOR . LexToken(ID,'e',3,41)
+   yacc.py: 445:Action : Shift and goto state 37
+   yacc.py: 410:
+   yacc.py: 411:State  : 37
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope declaracao_de_variaveis FIM_LINHA tipo_simples expressao SEPARADOR ID . LexToken(SEPARADOR,',',3,42)
+   yacc.py: 469:Action : Reduce rule [variavel -> ID] with ['e'] and goto state 30
+   yacc.py: 506:Result : <str @ 0x2290a150e30> ('e')
+   yacc.py: 410:
+   yacc.py: 411:State  : 30
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope declaracao_de_variaveis FIM_LINHA tipo_simples expressao SEPARADOR variavel . LexToken(SEPARADOR,',',3,42)
+   yacc.py: 469:Action : Reduce rule [fator -> variavel] with ['e'] and goto state 28
+   yacc.py: 506:Result : <str @ 0x2290a150e30> ('e')
+   yacc.py: 410:
+   yacc.py: 411:State  : 28
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope declaracao_de_variaveis FIM_LINHA tipo_simples expressao SEPARADOR fator . LexToken(SEPARADOR,',',3,42)
+   yacc.py: 469:Action : Reduce rule [termo -> fator] with ['e'] and goto state 27
+   yacc.py: 506:Result : <str @ 0x2290a150e30> ('e')
+   yacc.py: 410:
+   yacc.py: 411:State  : 27
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope declaracao_de_variaveis FIM_LINHA tipo_simples expressao SEPARADOR termo . LexToken(SEPARADOR,',',3,42)
+   yacc.py: 469:Action : Reduce rule [expressao_simples -> termo] with ['e'] and goto state 26
+   yacc.py: 506:Result : <str @ 0x2290a150e30> ('e')
+   yacc.py: 410:
+   yacc.py: 411:State  : 26
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope declaracao_de_variaveis FIM_LINHA tipo_simples expressao SEPARADOR expressao_simples . LexToken(SEPARADOR,',',3,42)
+   yacc.py: 469:Action : Reduce rule [expressao -> expressao_simples] with ['e'] and goto state 24
+   yacc.py: 506:Result : <str @ 0x2290a150e30> ('e')
+   yacc.py: 410:
+   yacc.py: 411:State  : 24
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope declaracao_de_variaveis FIM_LINHA tipo_simples expressao SEPARADOR expressao . LexToken(SEPARADOR,',',3,42)
+   yacc.py: 445:Action : Shift and goto state 54
+   yacc.py: 410:
+   yacc.py: 411:State  : 54
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope declaracao_de_variaveis FIM_LINHA tipo_simples expressao SEPARADOR expressao SEPARADOR . LexToken(ID,'f',3,44)
+   yacc.py: 445:Action : Shift and goto state 37
+   yacc.py: 410:
+   yacc.py: 411:State  : 37
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope declaracao_de_variaveis FIM_LINHA tipo_simples expressao SEPARADOR expressao SEPARADOR ID . LexToken(FIM_LINHA,';',3,45)
+   yacc.py: 469:Action : Reduce rule [variavel -> ID] with ['f'] and goto state 30
+   yacc.py: 506:Result : <str @ 0x2290a0a2ab0> ('f')
+   yacc.py: 410:
+   yacc.py: 411:State  : 30
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope declaracao_de_variaveis FIM_LINHA tipo_simples expressao SEPARADOR expressao SEPARADOR variavel . LexToken(FIM_LINHA,';',3,45)
+   yacc.py: 469:Action : Reduce rule [fator -> variavel] with ['f'] and goto state 28
+   yacc.py: 506:Result : <str @ 0x2290a0a2ab0> ('f')
+   yacc.py: 410:
+   yacc.py: 411:State  : 28
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope declaracao_de_variaveis FIM_LINHA tipo_simples expressao SEPARADOR expressao SEPARADOR fator . LexToken(FIM_LINHA,';',3,45)
+   yacc.py: 469:Action : Reduce rule [termo -> fator] with ['f'] and goto state 27
+   yacc.py: 506:Result : <str @ 0x2290a0a2ab0> ('f')
+   yacc.py: 410:
+   yacc.py: 411:State  : 27
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope declaracao_de_variaveis FIM_LINHA tipo_simples expressao SEPARADOR expressao SEPARADOR termo . LexToken(FIM_LINHA,';',3,45)
+   yacc.py: 469:Action : Reduce rule [expressao_simples -> termo] with ['f'] and goto state 26
+   yacc.py: 506:Result : <str @ 0x2290a0a2ab0> ('f')
+   yacc.py: 410:
+   yacc.py: 411:State  : 26
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope declaracao_de_variaveis FIM_LINHA tipo_simples expressao SEPARADOR expressao SEPARADOR expressao_simples . LexToken(FIM_LINHA,';',3,45)
+   yacc.py: 469:Action : Reduce rule [expressao -> expressao_simples] with ['f'] and goto state 24
+   yacc.py: 506:Result : <str @ 0x2290a0a2ab0> ('f')
+   yacc.py: 410:
+   yacc.py: 411:State  : 24
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope declaracao_de_variaveis FIM_LINHA tipo_simples expressao SEPARADOR expressao SEPARADOR expressao . LexToken(FIM_LINHA,';',3,45)
+   yacc.py: 473:Action : Reduce rule [empty -> <empty>] with [] and goto state 55
+   yacc.py: 548:Result : <NoneType @ 0x7ffefd7917f8> (None)
+   yacc.py: 410:
+   yacc.py: 411:State  : 55
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope declaracao_de_variaveis FIM_LINHA tipo_simples expressao SEPARADOR expressao SEPARADOR expressao empty . LexToken(FIM_LINHA,';',3,45)
+   yacc.py: 469:Action : Reduce rule [mais_parametros -> empty] with [None] and goto state 53
+   yacc.py: 506:Result : <NoneType @ 0x7ffefd7917f8> (None)
+   yacc.py: 410:
+   yacc.py: 411:State  : 53
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope declaracao_de_variaveis FIM_LINHA tipo_simples expressao SEPARADOR expressao SEPARADOR expressao mais_parametros . LexToken(FIM_LINHA,';',3,45)
+   yacc.py: 469:Action : Reduce rule [lista_de_parametros -> expressao mais_parametros] with ['f',None] and goto state 85
+   yacc.py: 506:Result : <list @ 0x2290da1af40> (['f'])
+   yacc.py: 410:
+   yacc.py: 411:State  : 85
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope declaracao_de_variaveis FIM_LINHA tipo_simples expressao SEPARADOR expressao SEPARADOR lista_de_parametros . LexToken(FIM_LINHA,';',3,45)
+   yacc.py: 469:Action : Reduce rule [mais_parametros -> SEPARADOR lista_de_parametros] with [',',['f']] and goto state 53
+   yacc.py: 506:Result : <list @ 0x2290da1af40> (['f'])
+   yacc.py: 410:
+   yacc.py: 411:State  : 53
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope declaracao_de_variaveis FIM_LINHA tipo_simples expressao SEPARADOR expressao mais_parametros . LexToken(FIM_LINHA,';',3,45)
+   yacc.py: 469:Action : Reduce rule [lista_de_parametros -> expressao mais_parametros] with ['e',['f']] and goto state 85
+   yacc.py: 506:Result : <list @ 0x2290da1b1c0> (['e', 'f'])
+   yacc.py: 410:
+   yacc.py: 411:State  : 85
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope declaracao_de_variaveis FIM_LINHA tipo_simples expressao SEPARADOR lista_de_parametros . LexToken(FIM_LINHA,';',3,45)
+   yacc.py: 469:Action : Reduce rule [mais_parametros -> SEPARADOR lista_de_parametros] with [',',['e', 'f']] and goto state 53
+   yacc.py: 506:Result : <list @ 0x2290da1b1c0> (['e', 'f'])
+   yacc.py: 410:
+   yacc.py: 411:State  : 53
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope declaracao_de_variaveis FIM_LINHA tipo_simples expressao mais_parametros . LexToken(FIM_LINHA,';',3,45)
+   yacc.py: 469:Action : Reduce rule [lista_de_parametros -> expressao mais_parametros] with ['d',['e', 'f']] and goto state 23
+   yacc.py: 506:Result : <list @ 0x2290da1af00> (['d', 'e', 'f'])
+   yacc.py: 410:
+   yacc.py: 411:State  : 23
+   yacc.py: 430:Defaulted state 23: Reduce using 6
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope declaracao_de_variaveis FIM_LINHA tipo_simples lista_de_parametros . LexToken(FIM_LINHA,';',3,45)
+   yacc.py: 469:Action : Reduce rule [declaracao_de_variaveis -> tipo_simples lista_de_parametros] with ['boolean',['d', 'e', 'f']] and goto state 10
+   yacc.py: 506:Result : <tuple @ 0x2290da45300> (('boolean', ['d', 'e', 'f']))
+   yacc.py: 410:
+   yacc.py: 411:State  : 10
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope declaracao_de_variaveis FIM_LINHA declaracao_de_variaveis . LexToken(FIM_LINHA,';',3,45)
+   yacc.py: 445:Action : Shift and goto state 22
+   yacc.py: 410:
+   yacc.py: 411:State  : 22
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope declaracao_de_variaveis FIM_LINHA declaracao_de_variaveis FIM_LINHA . LexToken(PROCEDURE,'procedure',5,48)
+   yacc.py: 473:Action : Reduce rule [empty -> <empty>] with [] and goto state 11
+   yacc.py: 548:Result : <NoneType @ 0x7ffefd7917f8> (None)
+   yacc.py: 410:
+   yacc.py: 411:State  : 11
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope declaracao_de_variaveis FIM_LINHA declaracao_de_variaveis FIM_LINHA empty . LexToken(PROCEDURE,'procedure',5,48)
+   yacc.py: 469:Action : Reduce rule [parte_declaracao_de_variaveis -> empty] with [None] and goto state 52
+   yacc.py: 506:Result : <list @ 0x2290da1af80> ([])
+   yacc.py: 410:
+   yacc.py: 411:State  : 52
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope declaracao_de_variaveis FIM_LINHA declaracao_de_variaveis FIM_LINHA parte_declaracao_de_variaveis . LexToken(PROCEDURE,'procedure',5,48)
+   yacc.py: 469:Action : Reduce rule [parte_declaracao_de_variaveis -> declaracao_de_variaveis FIM_LINHA parte_declaracao_de_variaveis] with [<tuple @ 0x2290da45300>,';',[]] and goto state 52
+   yacc.py: 506:Result : <list @ 0x2290da1af40> ([('boolean', ['d', 'e', 'f'])])
+   yacc.py: 410:
+   yacc.py: 411:State  : 52
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope declaracao_de_variaveis FIM_LINHA parte_declaracao_de_variaveis . LexToken(PROCEDURE,'procedure',5,48)
+   yacc.py: 469:Action : Reduce rule [parte_declaracao_de_variaveis -> declaracao_de_variaveis FIM_LINHA parte_declaracao_de_variaveis] with [<tuple @ 0x2290da44f80>,';',<list @ 0x2290da1af40>] and goto state 9
+   yacc.py: 506:Result : <list @ 0x2290da1b1c0> ([('int', ['a', 'b', 'c']), ('boolean', [ ...)
+   yacc.py: 410:
+   yacc.py: 411:State  : 9
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope parte_declaracao_de_variaveis . LexToken(PROCEDURE,'procedure',5,48)
+   yacc.py: 445:Action : Shift and goto state 21
+   yacc.py: 410:
+   yacc.py: 411:State  : 21
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope parte_declaracao_de_variaveis PROCEDURE . LexToken(ID,'proc',5,58)
+   yacc.py: 445:Action : Shift and goto state 51
+   yacc.py: 410:
+   yacc.py: 411:State  : 51
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope parte_declaracao_de_variaveis PROCEDURE ID . LexToken(AP,'(',5,62)
+   yacc.py: 445:Action : Shift and goto state 84
+   yacc.py: 410:
+   yacc.py: 411:State  : 84
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope parte_declaracao_de_variaveis PROCEDURE ID AP . LexToken(VAR,'var',5,63)
+   yacc.py: 579:Error  : PROGRAM ID FIM_LINHA new_scope parte_declaracao_de_variaveis PROCEDURE ID AP . LexToken(VAR,'var',5,63)
+   yacc.py: 410:
+   yacc.py: 411:State  : 84
+   yacc.py: 434:Stack  : PROGRAM ID FIM_LINHA new_scope parte_declaracao_de_variaveis PROCEDURE ID AP . $end
+   yacc.py: 579:Error  : PROGRAM ID FIM_LINHA new_scope parte_declaracao_de_variaveis PROCEDURE ID AP . $end

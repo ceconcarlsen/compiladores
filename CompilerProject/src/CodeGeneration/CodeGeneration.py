@@ -14,23 +14,20 @@ class CodeGenerator():
 		return self._instance
 
 	def __init__(self):
-		self.codeArea = [] #lista - area de codigo
-		self.indexCode = 0 #indice para marcar posicao atual na area de codigo
+		self.codeArea = [] #LISTA - area de codigo
+		self.indexCode = 0 #MARCADOR - area de codigo
 
-		self.dataArea = [] #pilha - area de dados
-		self.indexData = 0 #indice para marcar posical atual na pilha de dados
+		self.dataArea = [] #PILHA - area de dados
+		self.indexData = 0 #INDICE - marcar posical atual na pilha de dados
 
 		self.contadorData = 0
-
 
 		self.nomePrograma = ""
 
 		self.listaVariaveis = {}
 		self.listaComandos = []
 
-
-		self.foiExecutado = None #booleano
-
+		self.foiExecutado = None 
 
 		self.posicaoExpressao = None 
 		self.posicaoIF = [] #pilha
@@ -50,12 +47,12 @@ class CodeGenerator():
 	def setNomePrograma(self, nome):
 		self.nomePrograma = nome
 
-
 	def getContador(self):
 		return len(self.listaComandos)
 
-	#FUNCOES PARA GERAR OS CODIGOS
-
+#----------------------------------------------------------------------------------------------------------
+#									FUNÇÕES PARA GERADOR DE CÓDIGO
+#----------------------------------------------------------------------------------------------------------
 	def iniciarPrograma(self, nome):
 		if(errors.has_errors()):
 			return
@@ -102,7 +99,7 @@ class CodeGenerator():
 			self.listaComandos.append("AMEM 1")
 		
 		else:
-			erros.add_error("ERROR: Tipo nao existe\n")
+			errors.add_error("ERROR: Tipo nao existe\n")
 
 	def atribuicaoVariavel(self, nomeVariavel, valor=None): #VERIFICAR SOBRE O VALOR DA VARIAVEL
 		if(errors.has_errors()):
@@ -139,6 +136,7 @@ class CodeGenerator():
 
 		self.listaComandos.append("LEICH")
 
+#IF
 	def verificaIF(self):
 		if(errors.has_errors()):
 			return
@@ -150,7 +148,7 @@ class CodeGenerator():
 		self.posicaoIF.append(len(self.listaComandos))
 		self.executaNada()
 
-
+#IF
 	def desvioIF(self):
 		if(errors.has_errors()):
 			return
@@ -162,7 +160,7 @@ class CodeGenerator():
 		self.desvioSeFalso(self.posicaoIF[0], len(self.listaComandos) + 1)
 		self.posicaoIF2.append(self.posicaoIF.pop())
 
-
+#ELSE
 	def verificaElse(self):
 		if(errors.has_errors()):
 			return
@@ -176,6 +174,7 @@ class CodeGenerator():
 		self.posicaoELSE.append(len(self.listaComandos))
 		self.executaNada()
 
+#EXPRESSÃO
 	def setExpressao(self, num):
 		if(errors.has_errors()):
 			return
@@ -186,7 +185,7 @@ class CodeGenerator():
 
 		self.posicaoExpressao = num;
 
-
+#ELSE
 	def desvioElse(self):
 		if(errors.has_errors()):
 			return
@@ -204,7 +203,7 @@ class CodeGenerator():
 		
 		self.desvioSeFalso(posIF2, posELSE + 2)
 		
-
+#WHILE
 	def verificaWhile(self):
 		if(errors.has_errors()):
 			return
@@ -216,7 +215,7 @@ class CodeGenerator():
 		self.posicaoWHILE.append(len(self.listaComandos))
 		self.executaNada()
 
-
+#WHILE
 	def desvioWhile(self):
 		if(errors.has_errors()):
 			return
@@ -235,7 +234,7 @@ class CodeGenerator():
 
 		self.desvioSeFalso(posWHILE, len(self.listaComandos) + 1)
 
-
+#INC
 	def desvioIncondicional(self, posicaoComando, posicaoDesvio):
 		if(errors.has_errors()):
 			return
@@ -279,7 +278,7 @@ class CodeGenerator():
 		elif(operador == "<>"):
 			self.comparaDesigual()
 
-
+#COMPARADORES
 	def comaparaDesigual(self):
 		if(errors.has_errors()):
 			return
@@ -341,7 +340,7 @@ class CodeGenerator():
 		self.listaComandos.append("CMMA")
 
 
-
+#INVERSÃO
 	def inverterSinal(self):
 		if(errors.has_errors()):
 			return
@@ -362,7 +361,7 @@ class CodeGenerator():
 
 		self.listaComandos.append("INVR")
 
-
+#OPERATOR
 	def verificaOperador(self, operador):
 		if(errors.has_errors()):
 			return
@@ -388,7 +387,7 @@ class CodeGenerator():
 		elif(operador == "not"):
 			self.negacao()
 
-
+#ARITMÉTICAS
 	def adicao(self):
 		if(errors.has_errors()):
 			return
@@ -566,9 +565,6 @@ class CodeGenerator():
 
 		self.listaComandos.append("PARA")
 
-
-	#READ E WRITE de lista de variaveis talvez seja necessario
-
 	def listaVariaveisRead(self, lista_de_variaveis):
 		if(errors.has_errors()):
 			return
@@ -593,8 +589,6 @@ class CodeGenerator():
 		for variavel in lista_de_variaveis:
 			self.carregaValorDaVariavel(variavel, posNaExpressao)
 			self.imprimeInteiro()
-
-	#
 
 	def salvarEmArquivo(self, caminho):
 		self.revise()
@@ -623,10 +617,11 @@ class CodeGenerator():
 		for comando in self.listaComandos:
 			self.verifyConstValueOrder(comando)
 
-	def verifyConstValueOrder(self, command): #funcao para corrigir o bug de ordem para operacoes com constante à esquerda ex: b/4
+	def verifyConstValueOrder(self, command):
 		
 		print("\n\nEntrou na verificação com o comando: " + str(command))
 
+		#PRECEDÊNCIA
 		operations_that_order_matters = ["DIVI", "MODI","CMME","CMEG","CMMA","CMAG","CMIG","CMDG"]
 
 		if(command[0] in operations_that_order_matters):
@@ -637,7 +632,6 @@ class CodeGenerator():
 				if(self.listaComandos[command_index - 1][2] < self.listaComandos[command_index - 2][2]): #e se a variavel vem antes da constante
 																									#temos que inverter a ordem desses comandos
 					self.listaComandos[command_index - 1], self.listaComandos[command_index - 2] = self.listaComandos[command_index - 2], self.listaComandos[command_index - 1]
-
 
 					print("\n\nModificou com o comando: " + str(command))
 					print("\n\nLista pos modificada: " + str(self.listaComandos))
