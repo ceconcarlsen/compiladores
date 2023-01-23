@@ -1,15 +1,9 @@
 from Syntactic.Errors import *
-
-from CodeGeneration.Variavel import *
-
-
-errors = Errors()
-
-
+from CodeGeneration.Variables import *
 import inspect
 
+errors = Errors()
 DEBUG = False
-
 
 class CodeGenerator():
 	_instance = None
@@ -637,8 +631,6 @@ class CodeGenerator():
 
 		if(command[0] in operations_that_order_matters):
 			command_index = self.listaComandos.index(command)
-
-			#print("\n\nComandos antes: " + str(self.code[command_index - 1]) + str(self.code[command_index - 2]))
 
 			if(self.listaComandos[command_index - 1][0] == "CRVL" and self.listaComandos[command_index - 2][0] == "CRCT"): #se for um Carrega constante seguido de um carrega variavel
 				print("\n\nComandos na lista detalhada: " + str(self.listaComandos[command_index - 1][2]) +" "+ str(self.listaComandos[command_index - 2][2]))
