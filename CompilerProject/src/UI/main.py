@@ -15,7 +15,7 @@ from Interpreter.Interpreter import *
 from Syntactic.logger import*
 
 #Importando componentes para a sintaxe
-from PyQt5.QtCore import QFile, QRegExp, Qt, QSize, QObject
+from PyQt5.QtCore import QRegExp, Qt, QSize
 from PyQt5.QtGui import QFont, QSyntaxHighlighter, QTextCharFormat, QColor
 
 
