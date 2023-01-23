@@ -152,7 +152,7 @@ def createParser():
 
         procedure = scopes[-1].procedureTable.insert(p[2], p[3], p[5][1])
 
-        if(procedure == errors.ERROR_PROCEDURE_JA_DECLARADA):
+        if(procedure == errors.ERROR_PROCEDURE_EXIST):
             error_message = "ERROR: A procedure '"+ str(p[2]) +"' ja foi declarada - Linha: " + str(p.lineno(2))
             p_error(error_message)
         else:
@@ -224,7 +224,7 @@ def createParser():
 
         for variavel in tabela_de_variaveis:
             if(variavel['utilizada'] == False):
-                errors.add_warning("WARNING: Variavel '"+ variavel['lexema'] +"' declarada e nao utilizada - Linha: " + str(variavel['linha']))
+                errors.addWarning("WARNING: Variavel '"+ variavel['lexema'] +"' declarada e nao utilizada - Linha: " + str(variavel['linha']))
     #============================================================================================================================================================
                
     def p_comandos(p):
@@ -410,7 +410,7 @@ def createParser():
             else:
                 procedure = scopes[-1].procedureTable.search(p[1])
 
-                if(procedure == errors.ERROR_PROCEDURE_NAO_DECLARADA):
+                if(procedure == errors.ERROR_PROCEDURE_NO_EXIST):
                     error_message = "ERROR: A procedure '"+ str(p[1]) +"' nao foi declarada - Linha: " + str(p.lineno(1))
                     p_error(error_message)
                 
@@ -749,7 +749,7 @@ def createParser():
         if(isinstance(p, str)):
             print(str(p))
             #adiciona erro à lista de erros para serem exibidos na interface
-            errors.add_error(p)
+            errors.addError(p)
             
             # #tratamento para o parser continuar o trabalho, ignorando o erro, para que seja possivel exibir todos os erros ao mesmo tempo
             # while(True):
@@ -773,7 +773,7 @@ def createParser():
             
             if(p != None):
                 print("ERRO DE SINTAXE - Token '" + str(p.value) + "' - LINHA " + str(p.lineno)) 
-                errors.add_error("ERRO DE SINTAXE  - Token '" + str(p.value) + "' - LINHA " + str(p.lineno))
+                errors.addError("ERRO DE SINTAXE  - Token '" + str(p.value) + "' - LINHA " + str(p.lineno))
                 
                 while True:
                     tok = parser.token()         # Get the next token
@@ -785,7 +785,7 @@ def createParser():
             # else:
                
             #     print("ERRO DE SINTAXE  - EOF") 
-            #     errors.add_error("ERRO DE SINTAXE  - EOF")
+            #     errors.addError("ERRO DE SINTAXE  - EOF")
 
                 
 

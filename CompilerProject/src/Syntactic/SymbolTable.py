@@ -155,7 +155,7 @@ class ProcedureTable(SymbolTable):
 															 				#valor se refere ao valor que aquela variavel representa
 															 				# OBS: QUALQUER CAMPO PODE SER NULO
 
-		if(self.search(lexema) == errors.ERROR_PROCEDURE_NAO_DECLARADA):
+		if(self.search(lexema) == errors.ERROR_PROCEDURE_NO_EXIST):
 			
 
 			temp_dict = dict((field, None) for field in self.fields)
@@ -184,7 +184,7 @@ class ProcedureTable(SymbolTable):
 
 		else:
 			print('A procedure ',lexema,' já foi declarada.\n')
-			return errors.ERROR_PROCEDURE_JA_DECLARADA
+			return errors.ERROR_PROCEDURE_EXIST
 
 	def search(self, lexema):
 		for element in self.table:
@@ -192,13 +192,13 @@ class ProcedureTable(SymbolTable):
 				return element
 		
 		print('A procedure pesquisada (',lexema,') não existe na tabela (não foi declarada).\n')
-		return errors.ERROR_PROCEDURE_NAO_DECLARADA
+		return errors.ERROR_PROCEDURE_NO_EXIST
 				
 
 
 	def remove(self, lexema):
 		procedure = self.search(lexema)
-		if(procedure != errors.ERROR_PROCEDURE_NAO_DECLARADA):
+		if(procedure != errors.ERROR_PROCEDURE_NO_EXIST):
 			self.table.remove(lexema)
 			return lexema
 		

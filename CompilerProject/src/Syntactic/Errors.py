@@ -18,36 +18,36 @@ class Errors(object):
 		self.warningList = []
 
 
-		self.ERROR_PROCEDURE_NAO_DECLARADA = "ERROR: procedure-nao-declarada"
-		self.ERROR_PROCEDURE_JA_DECLARADA = "ERROR: procedure-ja-declarada"
+		self.ERROR_PROCEDURE_NO_EXIST = "ERROR: procedure-nao-declarada"
+		self.ERROR_PROCEDURE_EXIST = "ERROR: procedure-ja-declarada"
 
-		self.ERROR_READ_PARAMETROS = "ERROR: parametros-read-incoerentes"
+		self.ERROR_READ_PARAMETERS = "ERROR: parametros-read-incoerentes"
 		
 		
 
-	def add_error(self, error):
+	def addError(self, error):
 		self.errorList.append(error)
 		return True
 
-	def add_warning(self, warning):
+	def addWarning(self, warning):
 		self.warningList.append(warning)
 		return True
 
-	def clear_errors(self):
+	def clearErrors(self):
 		self.errorList = []
 		return True
 
-	def clear_warnings(self):
+	def clearWarnings(self):
 		self.warningList = []
 		return True
 
-	def get_errorList(self):
+	def getErrorList(self):
 		return self.errorList
 
-	def get_warningList(self):
+	def getWarningList(self):
 		return self.warningList
 
-	def has_errors(self):
+	def hasErrors(self):
 		if(len(self.errorList) > 0):
 			return True
 

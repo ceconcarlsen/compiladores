@@ -57,7 +57,7 @@ class CodeGenerator():
 		return len(self.listaComandos)
 
 	def iniciarPrograma(self, nome):
-		if(errors.has_errors()):
+		if(errors.hasErrors()):
 			return
 
 		if(DEBUG):
@@ -70,7 +70,7 @@ class CodeGenerator():
 
 
 	def declararVariavel(self, nomeVariavel, tipo):
-		if(errors.has_errors()):
+		if(errors.hasErrors()):
 			return
 
 		if(DEBUG):
@@ -102,10 +102,10 @@ class CodeGenerator():
 			self.listaComandos.append("AMEM 1")
 		
 		else:
-			erros.add_error("ERROR: Tipo nao existe\n")
+			erros.addError("ERROR: Tipo nao existe\n")
 
 	def atribuicaoVariavel(self, nomeVariavel, valor=None): 
-		if(errors.has_errors()):
+		if(errors.hasErrors()):
 			return
 
 		if(DEBUG):
@@ -120,7 +120,7 @@ class CodeGenerator():
 
 
 	def leituraInteiro(self):
-		if(errors.has_errors()):
+		if(errors.hasErrors()):
 			return
 
 		if(DEBUG):
@@ -130,7 +130,7 @@ class CodeGenerator():
 		self.listaComandos.append("LEIT")
 
 	def leituraCaracter(self):
-		if(errors.has_errors()):
+		if(errors.hasErrors()):
 			return
 
 		if(DEBUG):
@@ -140,7 +140,7 @@ class CodeGenerator():
 		self.listaComandos.append("LEICH")
 
 	def verificaIF(self):
-		if(errors.has_errors()):
+		if(errors.hasErrors()):
 			return
 
 		if(DEBUG):
@@ -152,7 +152,7 @@ class CodeGenerator():
 
 
 	def desvioIF(self):
-		if(errors.has_errors()):
+		if(errors.hasErrors()):
 			return
 
 		if(DEBUG):
@@ -164,7 +164,7 @@ class CodeGenerator():
 
 
 	def verificaElse(self):
-		if(errors.has_errors()):
+		if(errors.hasErrors()):
 			return
 
 		if(DEBUG):
@@ -177,7 +177,7 @@ class CodeGenerator():
 		self.executaNada()
 
 	def setExpressao(self, num):
-		if(errors.has_errors()):
+		if(errors.hasErrors()):
 			return
 
 		if(DEBUG):
@@ -188,7 +188,7 @@ class CodeGenerator():
 
 
 	def desvioElse(self):
-		if(errors.has_errors()):
+		if(errors.hasErrors()):
 			return
 
 		if(DEBUG):
@@ -204,7 +204,7 @@ class CodeGenerator():
 		
 
 	def verificaWhile(self):
-		if(errors.has_errors()):
+		if(errors.hasErrors()):
 			return
 
 		if(DEBUG):
@@ -216,7 +216,7 @@ class CodeGenerator():
 
 
 	def desvioWhile(self):
-		if(errors.has_errors()):
+		if(errors.hasErrors()):
 			return
 
 		if(DEBUG):
@@ -233,7 +233,7 @@ class CodeGenerator():
 
 
 	def desvioIncondicional(self, posicaoComando, posicaoDesvio):
-		if(errors.has_errors()):
+		if(errors.hasErrors()):
 			return
 
 		if(DEBUG):
@@ -243,7 +243,7 @@ class CodeGenerator():
 		self.listaComandos[posicaoComando] = "DSVS " + str(posicaoDesvio)
 
 	def desvioSeFalso(self, posicaoComando, posicaoDesvio):
-		if(errors.has_errors()):
+		if(errors.hasErrors()):
 			return
 
 		if(DEBUG):
@@ -254,7 +254,7 @@ class CodeGenerator():
 
 
 	def verificaRelacao(self, operador):
-		if(errors.has_errors()):
+		if(errors.hasErrors()):
 			return
 
 		if(DEBUG):
@@ -275,7 +275,7 @@ class CodeGenerator():
 			self.comparaDesigual()
 
 	def comaparaDesigual(self):
-		if(errors.has_errors()):
+		if(errors.hasErrors()):
 			return
 
 		if(DEBUG):
@@ -285,7 +285,7 @@ class CodeGenerator():
 		self.listaComandos.append("CMDG")
 
 	def comparaIgual(self):
-		if(errors.has_errors()):
+		if(errors.hasErrors()):
 			return
 
 		if(DEBUG):
@@ -295,7 +295,7 @@ class CodeGenerator():
 		self.listaComandos.append("CMIG")
 
 	def comparaMenor(self):
-		if(errors.has_errors()):
+		if(errors.hasErrors()):
 			return
 
 		if(DEBUG):
@@ -305,7 +305,7 @@ class CodeGenerator():
 		self.listaComandos.append("CMME")
 
 	def comparaMenorIgual(self):
-		if(errors.has_errors()):
+		if(errors.hasErrors()):
 			return
 
 		if(DEBUG):
@@ -315,7 +315,7 @@ class CodeGenerator():
 		self.listaComandos.append("CMEG")
 
 	def comparaMaiorIgual(self):
-		if(errors.has_errors()):
+		if(errors.hasErrors()):
 			return
 
 		if(DEBUG):
@@ -325,7 +325,7 @@ class CodeGenerator():
 		self.listaComandos.append("CMAG")
 
 	def comparaMaior(self):
-		if(errors.has_errors()):
+		if(errors.hasErrors()):
 			return
 
 		if(DEBUG):
@@ -336,7 +336,7 @@ class CodeGenerator():
 
 
 	def inverterSinal(self):
-		if(errors.has_errors()):
+		if(errors.hasErrors()):
 			return
 
 		if(DEBUG):
@@ -346,7 +346,7 @@ class CodeGenerator():
 		self.inversao()
 
 	def inversao(self):
-		if(errors.has_errors()):
+		if(errors.hasErrors()):
 			return
 
 		if(DEBUG):
@@ -357,7 +357,7 @@ class CodeGenerator():
 
 
 	def verificaOperador(self, operador):
-		if(errors.has_errors()):
+		if(errors.hasErrors()):
 			return
 
 		if(DEBUG):
@@ -383,7 +383,7 @@ class CodeGenerator():
 
 
 	def adicao(self):
-		if(errors.has_errors()):
+		if(errors.hasErrors()):
 			return
 
 		if(DEBUG):
@@ -393,7 +393,7 @@ class CodeGenerator():
 		self.listaComandos.append("SOMA")
 
 	def subtracao(self):
-		if(errors.has_errors()):
+		if(errors.hasErrors()):
 			return
 
 		if(DEBUG):
@@ -403,7 +403,7 @@ class CodeGenerator():
 		self.listaComandos.append("SUBT")
 
 	def multiplicacao(self):
-		if(errors.has_errors()):
+		if(errors.hasErrors()):
 			return
 
 		if(DEBUG):
@@ -413,7 +413,7 @@ class CodeGenerator():
 		self.listaComandos.append("MULT")
 
 	def divisao(self):
-		if(errors.has_errors()):
+		if(errors.hasErrors()):
 			return
 
 		if(DEBUG):
@@ -423,7 +423,7 @@ class CodeGenerator():
 		self.listaComandos.append("DIVI")
 
 	def divisaoInteira(self):
-		if(errors.has_errors()):
+		if(errors.hasErrors()):
 			return
 
 		if(DEBUG):
@@ -433,7 +433,7 @@ class CodeGenerator():
 		self.listaComandos.append("MODI")
 
 	def disjuncao(self):
-		if(errors.has_errors()):
+		if(errors.hasErrors()):
 			return
 
 		if(DEBUG):
@@ -443,7 +443,7 @@ class CodeGenerator():
 		self.listaComandos.append("DISJ")
 
 	def conjuncao(self):
-		if(errors.has_errors()):
+		if(errors.hasErrors()):
 			return
 
 		if(DEBUG):
@@ -453,7 +453,7 @@ class CodeGenerator():
 		self.listaComandos.append("CONJ")
 
 	def negacao(self):
-		if(errors.has_errors()):
+		if(errors.hasErrors()):
 			return
 
 		if(DEBUG):
@@ -464,7 +464,7 @@ class CodeGenerator():
 
 
 	def carregaValorConstante(self, valor, posNaExpressao):
-		if(errors.has_errors()):
+		if(errors.hasErrors()):
 			return
 
 		if(DEBUG):
@@ -474,7 +474,7 @@ class CodeGenerator():
 		self.listaComandos.append("CRCT " + str(valor) + " " + str(posNaExpressao))
 
 	def carregaValorDaVariavel(self, nomeVariavel, posNaExpressao):
-		if(errors.has_errors()):
+		if(errors.hasErrors()):
 			return
 
 		if(DEBUG):
@@ -489,7 +489,7 @@ class CodeGenerator():
 			return e
 
 	def executaNada(self):
-		if(errors.has_errors()):
+		if(errors.hasErrors()):
 			return
 
 		if(DEBUG):
@@ -500,7 +500,7 @@ class CodeGenerator():
 
 
 	def imprimeInteiro(self):
-		if(errors.has_errors()):
+		if(errors.hasErrors()):
 			return
 
 		if(DEBUG):
@@ -510,7 +510,7 @@ class CodeGenerator():
 		self.listaComandos.append("IMPR")
 
 	def imprimeCaracter(self):
-		if(errors.has_errors()):
+		if(errors.hasErrors()):
 			return
 
 		if(DEBUG):
@@ -520,7 +520,7 @@ class CodeGenerator():
 		self.listaComandos.append("IMPC")
 
 	def imprimeNovaLinha(self):
-		if(errors.has_errors()):
+		if(errors.hasErrors()):
 			return
 
 		if(DEBUG):
@@ -530,7 +530,7 @@ class CodeGenerator():
 		self.listaComandos.append("IMPE")
 
 	def alocaMemoria(self, n):
-		if(errors.has_errors()):
+		if(errors.hasErrors()):
 			return
 
 		if(DEBUG):
@@ -540,7 +540,7 @@ class CodeGenerator():
 		self.listaComandos.append("AMEM " + n)
 
 	def desalocaMemoria(self, n):
-		if(errors.has_errors()):
+		if(errors.hasErrors()):
 			return
 
 		if(DEBUG):
@@ -550,7 +550,7 @@ class CodeGenerator():
 		self.listaComandos.append("DMEM " + n)
 
 	def finalizarPrograma(self):
-		if(errors.has_errors()):
+		if(errors.hasErrors()):
 			return
 
 		if(DEBUG):
@@ -561,7 +561,7 @@ class CodeGenerator():
 
 
 	def listaVariaveisRead(self, lista_de_variaveis):
-		if(errors.has_errors()):
+		if(errors.hasErrors()):
 			return
 
 		if(DEBUG):
@@ -574,7 +574,7 @@ class CodeGenerator():
 
 
 	def listaVariaveisWrite(self, lista_de_variaveis, posNaExpressao):
-		if(errors.has_errors()):
+		if(errors.hasErrors()):
 			return
 
 		if(DEBUG):

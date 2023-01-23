@@ -146,7 +146,7 @@ class Interpreter:
 			try:
 				self.stack.append(b/a)
 			except ZeroDivisionError:
-				errors.add_error("ERROR: Zero Division")
+				errors.addError("ERROR: Zero Division")
 				self.stack.append(-100000)
 
 

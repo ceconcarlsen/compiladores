@@ -469,21 +469,21 @@ class ExecWindow(Ui_MainWindow):
             error_list = ""
             
 
-            #print(errors.get_errorList())
+            #print(errors.getErrorList())
             #INCUINDO ERROS NO OUTPUT
-            if(errors.has_errors()):  #SE TIVER ERROS, EXIBE APENAS OS ERROS
-                for error in errors.get_errorList():
+            if(errors.hasErrors()):  #SE TIVER ERROS, EXIBE APENAS OS ERROS
+                for error in errors.getErrorList():
                     error_list = error_list + error + "\n"
-                errors.clear_errors() 
+                errors.clearErrors() 
 
                 self.textOutput.setText("")
                 self.textOutput.setText(error_list)
             else:
                 result = str(result) + "\n"
                 # INCLUINDO WARNINGS NO OUTPUT
-                for warning in errors.get_warningList():
+                for warning in errors.getWarningList():
                     result = result + warning + "\n"
-                errors.clear_warnings()
+                errors.clearWarnings()
 
 
                 self.textOutput.setText("")
@@ -501,19 +501,19 @@ class ExecWindow(Ui_MainWindow):
         else: # caso existirem erros
              # INCLUINDO ERROS NO OUTPUT
             error_list = ""
-            if(errors.has_errors()): #SE TIVER ERROS, EXIBE APENAS OS ERROS
-                for error in errors.get_errorList():
+            if(errors.hasErrors()): #SE TIVER ERROS, EXIBE APENAS OS ERROS
+                for error in errors.getErrorList():
                     error_list = error_list + error + "\n"
-                errors.clear_errors() 
+                errors.clearErrors() 
 
                 self.textOutput.setText("")
                 self.textOutput.setText(error_list)
             
             else:
                 # INCLUINDO WARNINGS NO OUTPUT
-                for warning in errors.get_warningList():
+                for warning in errors.getWarningList():
                     error_list = error_list + warning + "\n"
-                errors.clear_warnings()
+                errors.clearWarnings()
                 
                 self.textOutput.setText("")
                 self.textOutput.setText(error_list)
