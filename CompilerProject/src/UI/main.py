@@ -15,9 +15,8 @@ from Interpreter.Interpreter import *
 from Syntactic.logger import*
 
 #Importando componentes para a sintaxe
-from PyQt5.QtCore import QRegExp, Qt, QSize
+from PyQt5.QtCore import QFile, QRegExp, Qt, QSize, QObject
 from PyQt5.QtGui import QFont, QSyntaxHighlighter, QTextCharFormat, QColor
-import sys
 
 
 # Chamando objeto Errors
@@ -98,9 +97,9 @@ class CodeArea(QtWidgets.QPlainTextEdit):
         self.lineNumberArea.setGeometry(QtCore.QRect(cr.left(), cr.top(), self.lineNumberAreaWidth(), cr.height()))
 
     def lineNumberAreaPaintEvent(self, event):
-        # myPainter = QtGui.QPainter(self.lineNumberArea)
+        myPainter = QtGui.QPainter(self.lineNumberArea)
 
-        # myPainter.fillRect(event.rect(), QtCore.Qt.lightGray)
+        myPainter.fillRect(event.rect(), QtCore.Qt.lightGray)
 
         block = self.firstVisibleBlock()
         blockNumber = block.blockNumber()
@@ -112,8 +111,8 @@ class CodeArea(QtWidgets.QPlainTextEdit):
         while block.isValid() and (top <= event.rect().bottom()):
             if block.isVisible() and (bottom >= event.rect().top()):
                 number = str(blockNumber + 1)
-                # myPainter.setPen(QtCore.Qt.black)
-                # myPainter.drawText(0, int(top), int(self.lineNumberArea.width()), int(height), QtCore.Qt.AlignCenter, number)
+                myPainter.setPen(QtCore.Qt.black)
+                myPainter.drawText(0, int(top), int(self.lineNumberArea.width()), int(height), QtCore.Qt.AlignCenter, number)
 
             block = block.next()
             top = bottom
@@ -342,6 +341,7 @@ class ExecWindow(Ui_MainWindow):
         super().setupUi(self.window)
         
         # Setting window properties
+        self.window.setWindowIcon(QtGui.QIcon('icons/windowIcon.png'))
         #Window Flags (Disable resize)
         self.window.setWindowFlags(QtCore.Qt.WindowCloseButtonHint | QtCore.Qt.WindowMinimizeButtonHint)
         self.window.setStyleSheet("background-color: white;")
@@ -353,6 +353,7 @@ class ExecWindow(Ui_MainWindow):
         self.textInput.setObjectName("textInput")
 
         # Setting tab distance
+        self.textInput.setTabStopDistance(QtGui.QFontMetricsF(self.textInput.font()).horizontalAdvance(' ') * 4)
 
         # Setting syntax colors for textInput
         self.highlighter = Highlighter('input', self.textInput.document())
@@ -367,12 +368,12 @@ class ExecWindow(Ui_MainWindow):
         """
         QPushButton
         {
-        background-color: #FFFF;
+        background-color: #D0D0D0;
         border-radius: 15px;
         }
         QPushButton::hover
         {
-        background-color: #D0D0D0;
+        background-color: #9A9A9A;
         }
         """
         )
@@ -381,12 +382,12 @@ class ExecWindow(Ui_MainWindow):
         """
         QPushButton
         {
-        background-color: #FFFF;
+        background-color: #D0D0D0;
         border-radius: 15px;
         }
         QPushButton::hover
         {
-        background-color: #D0D0D0;
+        background-color: #9A9A9A;
         }
         """
         )

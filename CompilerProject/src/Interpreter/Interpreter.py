@@ -1,9 +1,14 @@
-from PyQt5 import QtWidgets
+from PyQt5 import QtCore, QtGui, QtWidgets
+
 from Syntactic.Errors import *
+
 from CodeGeneration.CodeGeneration import *
 
 codeGenerator = CodeGenerator()
+
+import time
 errors = Errors()
+
 readFile = 'ReadWrite-Files/read.txt'
 writeFile = 'ReadWrite-Files/writeInterpreter.txt'
 
@@ -17,8 +22,8 @@ class Interpreter:
 
 	def __init__(self):
 		self.text = ""
-		self.code = [] #LISTA
-		self.stack = [] #PILHA
+		self.code = [] 
+		self.stack = [] 
 
 		self.instructionCounter = 0;
 
@@ -29,6 +34,7 @@ class Interpreter:
 
 		with open(writeFile, "w") as f:
 			f.write("")
+
 
 	def setStack(self, stack):
 		self.stack = stack
@@ -51,6 +57,7 @@ class Interpreter:
 	def setInstructionCounter(self, counter):
 		self.instructionCounter = counter
 
+
 	def readFile(self, path):
 		self.code = []
 		self.text = ""
@@ -68,7 +75,10 @@ class Interpreter:
 				self.text = self.text + parte + " "
 			self.text = self.text + "\n"
 
+
+
 	def execute(self, window):
+
 		self.instructionCounter = 0;
 
 		self.incrementFlag = True
@@ -81,7 +91,8 @@ class Interpreter:
 		print("\n\n\nCODIGO: \n\n" + str(self.code))
 		while(self.instructionCounter < len(self.code)):
 			try:
-				command = self.code[self.instructionCounter] #COMANDOS
+
+				command = self.code[self.instructionCounter] 
 
 				print(str(command) + " Contador: " + str(self.instructionCounter) + "\n")
 
@@ -101,17 +112,18 @@ class Interpreter:
 			except Exception as e:
 				print("ERROR: Execution Error: " + str(e))
 
+		 
+
 	def interpreta(self, command, window):
-		if(command[0] == "CRCT"): #CONSTANTE
+		if(command[0] == "CRCT"): 
 			self.stack.append(int(command[1]))
 
-		elif(command[0] == "CRVL"): #VALOR DE VARIAVEL
+		elif(command[0] == "CRVL"): 
 			self.stack.append(self.stack[int(command[1])])
 
-		elif(command[0] == "ARMZ"): #ARMAZENA
+		elif(command[0] == "ARMZ"): 
 			self.stack[int(command[1])] = self.stack.pop()
 
-		#VERIFICA COMANDO
 		elif(command[0] == "SOMA"):
 			a = self.stack.pop()
 			b = self.stack.pop()
@@ -137,13 +149,14 @@ class Interpreter:
 				errors.add_error("ERROR: Zero Division")
 				self.stack.append(-100000)
 
-		elif(command[0] == "MODI"): #DIVISAO INTEIRA
+
+		elif(command[0] == "MODI"):
 			a = self.stack.pop()
 			b = self.stack.pop()
 			
 			self.stack.append(b//a)
 
-		elif(command[0] == "CONJ"): #AND
+		elif(command[0] == "CONJ"): 
 			result = None
 
 			a = self.stack.pop()
@@ -154,7 +167,7 @@ class Interpreter:
 			else:
 				self.stack.append(0)
 
-		elif(command[0] == "DISJ"): #OR
+		elif(command[0] == "DISJ"): 
 			result = None
 
 			a = self.stack.pop()
@@ -165,7 +178,7 @@ class Interpreter:
 			else:
 				self.stack.append(0)
 
-		elif(command[0] == "INVR"): #NOT
+		elif(command[0] == "INVR"): 
 			a = self.stack.pop()
 			self.stack.append(-a)
 
@@ -176,7 +189,7 @@ class Interpreter:
 			
 			self.stack.append(1 - a)
 			
-		elif(command[0] == "CMME"): #SE MENOR
+		elif(command[0] == "CMME"): 
 			a = self.stack.pop()
 			b = self.stack.pop()
 
@@ -185,7 +198,7 @@ class Interpreter:
 			else:
 				self.stack.append(0)
 
-		elif(command[0] == "CMEG"):#SE MENOR IGUAL
+		elif(command[0] == "CMEG"):
 			a = self.stack.pop()
 			b = self.stack.pop()
 
@@ -194,7 +207,7 @@ class Interpreter:
 			else:
 				self.stack.append(0)
 
-		elif(command[0] == "CMMA"): #SE MAIOR
+		elif(command[0] == "CMMA"): 
 			a = self.stack.pop()
 			b = self.stack.pop()
 
@@ -204,7 +217,7 @@ class Interpreter:
 				self.stack.append(0)
 
 		
-		elif(command[0] == "CMAG"): #SE MAIOR OU IGUAL
+		elif(command[0] == "CMAG"): 
 			a = self.stack.pop()
 			b = self.stack.pop()
 
@@ -213,7 +226,7 @@ class Interpreter:
 			else:
 				self.stack.append(0)
 
-		elif(command[0] == "CMIG"): #SE IGUAL
+		elif(command[0] == "CMIG"): 
 
 			a = self.stack.pop()
 			b = self.stack.pop()
@@ -223,7 +236,7 @@ class Interpreter:
 			else:
 				self.stack.append(0)
 
-		elif(command[0] == "CMDG"): #SE DESIGUAL
+		elif(command[0] == "CMDG"): 
 			a = self.stack.pop()
 			b = self.stack.pop()
 
@@ -232,38 +245,38 @@ class Interpreter:
 			else:
 				self.stack.append(0)
 
-		elif(command[0] == "DSVS"): #DESVIO INCONDICIONAL
+		elif(command[0] == "DSVS"): 
 			self.instructionCounter = int(command[1])
 			self.incrementFlag = False
 
-		elif(command[0] == "DSVF"): #DESVIO VERDADEIRO/FALSO
+		elif(command[0] == "DSVF"): 
 			a = self.stack.pop()
 
 			if(a == 0):
 				self.instructionCounter = int(command[1])
 				self.incrementFlag = False
 
-		elif(command[0] == "NADA"): #AÇÃO INERTE
+		elif(command[0] == "NADA"): 
 			pass
 
-		elif(command[0] == "LEIT"): #INT
+		elif(command[0] == "LEIT"): 
 			number, confirmed = QtWidgets.QInputDialog.getInt(window, 'Input', 'Digite um inteiro: ')
 			self.stack.append(number)
 
-		elif(command[0] == "LEICH"): #CHAR
+		elif(command[0] == "LEICH"):
 			character, confirmed = QtWidgets.QInputDialog.getInt(window, 'Input', 'Digite um char: ')
 			self.stack.append(chr(character))
+
 
 		elif(command[0] == "IMPR"):
 			a = int(self.stack.pop())
 
-			#IMPRIME ARQUIVO
 			with open(writeFile, "a") as f:
 				f.write(str(a) + " ")
 
-			#PARA IMPRIMIR NA TELA
 			self.print_list = self.print_list + str(a) + "\n"
 			
+
 		elif(command[0] == "IMPC"):
 			a = chr(self.stack.pop())
 

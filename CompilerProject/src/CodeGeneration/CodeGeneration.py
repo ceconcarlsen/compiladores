@@ -1,8 +1,11 @@
 from Syntactic.Errors import *
+
 from CodeGeneration.Variables import *
-import inspect
 
 errors = Errors()
+
+import inspect
+
 DEBUG = False
 
 class CodeGenerator():
@@ -14,26 +17,29 @@ class CodeGenerator():
 		return self._instance
 
 	def __init__(self):
-		self.codeArea = [] #LISTA - area de codigo
-		self.indexCode = 0 #MARCADOR - area de codigo
+		self.codeArea = [] 
+		self.indexCode = 0 
 
-		self.dataArea = [] #PILHA - area de dados
-		self.indexData = 0 #INDICE - marcar posical atual na pilha de dados
+		self.dataArea = [] 
+		self.indexData = 0 
 
 		self.contadorData = 0
+
 
 		self.nomePrograma = ""
 
 		self.listaVariaveis = {}
 		self.listaComandos = []
 
+
 		self.foiExecutado = None 
 
+
 		self.posicaoExpressao = None 
-		self.posicaoIF = [] #pilha
-		self.posicaoIF2 = [] #pilha
-		self.posicaoELSE = [] #pilha
-		self.posicaoWHILE = [] #pilha
+		self.posicaoIF = [] 
+		self.posicaoIF2 = [] 
+		self.posicaoELSE = [] 
+		self.posicaoWHILE = [] 
 
 	def getListaVariaveis(self):
 		return self.listaVariaveis
@@ -50,9 +56,6 @@ class CodeGenerator():
 	def getContador(self):
 		return len(self.listaComandos)
 
-#----------------------------------------------------------------------------------------------------------
-#									FUNÇÕES PARA GERADOR DE CÓDIGO
-#----------------------------------------------------------------------------------------------------------
 	def iniciarPrograma(self, nome):
 		if(errors.has_errors()):
 			return
@@ -66,7 +69,7 @@ class CodeGenerator():
 			self.listaComandos.append('INPP')
 
 
-	def declararVariavel(self, nomeVariavel, tipo): # fazer float
+	def declararVariavel(self, nomeVariavel, tipo):
 		if(errors.has_errors()):
 			return
 
@@ -99,9 +102,9 @@ class CodeGenerator():
 			self.listaComandos.append("AMEM 1")
 		
 		else:
-			errors.add_error("ERROR: Tipo nao existe\n")
+			erros.add_error("ERROR: Tipo nao existe\n")
 
-	def atribuicaoVariavel(self, nomeVariavel, valor=None): #VERIFICAR SOBRE O VALOR DA VARIAVEL
+	def atribuicaoVariavel(self, nomeVariavel, valor=None): 
 		if(errors.has_errors()):
 			return
 
@@ -136,7 +139,6 @@ class CodeGenerator():
 
 		self.listaComandos.append("LEICH")
 
-#IF
 	def verificaIF(self):
 		if(errors.has_errors()):
 			return
@@ -148,7 +150,7 @@ class CodeGenerator():
 		self.posicaoIF.append(len(self.listaComandos))
 		self.executaNada()
 
-#IF
+
 	def desvioIF(self):
 		if(errors.has_errors()):
 			return
@@ -160,7 +162,7 @@ class CodeGenerator():
 		self.desvioSeFalso(self.posicaoIF[0], len(self.listaComandos) + 1)
 		self.posicaoIF2.append(self.posicaoIF.pop())
 
-#ELSE
+
 	def verificaElse(self):
 		if(errors.has_errors()):
 			return
@@ -174,7 +176,6 @@ class CodeGenerator():
 		self.posicaoELSE.append(len(self.listaComandos))
 		self.executaNada()
 
-#EXPRESSÃO
 	def setExpressao(self, num):
 		if(errors.has_errors()):
 			return
@@ -185,7 +186,7 @@ class CodeGenerator():
 
 		self.posicaoExpressao = num;
 
-#ELSE
+
 	def desvioElse(self):
 		if(errors.has_errors()):
 			return
@@ -194,8 +195,6 @@ class CodeGenerator():
 			print(str(inspect.stack()[0][3]) + ": ")
 			self.printComandos()
 
-			
-
 		posIF2 = self.posicaoIF2.pop()
 		posELSE = self.posicaoELSE.pop()
 
@@ -203,7 +202,7 @@ class CodeGenerator():
 		
 		self.desvioSeFalso(posIF2, posELSE + 2)
 		
-#WHILE
+
 	def verificaWhile(self):
 		if(errors.has_errors()):
 			return
@@ -215,7 +214,7 @@ class CodeGenerator():
 		self.posicaoWHILE.append(len(self.listaComandos))
 		self.executaNada()
 
-#WHILE
+
 	def desvioWhile(self):
 		if(errors.has_errors()):
 			return
@@ -223,8 +222,6 @@ class CodeGenerator():
 		if(DEBUG):
 			print(str(inspect.stack()[0][3]) + ": ")
 			self.printComandos()
-
-		
 
 		posWHILE = self.posicaoWHILE.pop()
 
@@ -234,7 +231,7 @@ class CodeGenerator():
 
 		self.desvioSeFalso(posWHILE, len(self.listaComandos) + 1)
 
-#INC
+
 	def desvioIncondicional(self, posicaoComando, posicaoDesvio):
 		if(errors.has_errors()):
 			return
@@ -254,7 +251,6 @@ class CodeGenerator():
 			self.printComandos()
 
 		self.listaComandos[posicaoComando] = "DSVF " + str(posicaoDesvio)
-
 
 
 	def verificaRelacao(self, operador):
@@ -278,7 +274,6 @@ class CodeGenerator():
 		elif(operador == "<>"):
 			self.comparaDesigual()
 
-#COMPARADORES
 	def comaparaDesigual(self):
 		if(errors.has_errors()):
 			return
@@ -340,7 +335,6 @@ class CodeGenerator():
 		self.listaComandos.append("CMMA")
 
 
-#INVERSÃO
 	def inverterSinal(self):
 		if(errors.has_errors()):
 			return
@@ -361,7 +355,7 @@ class CodeGenerator():
 
 		self.listaComandos.append("INVR")
 
-#OPERATOR
+
 	def verificaOperador(self, operador):
 		if(errors.has_errors()):
 			return
@@ -387,7 +381,7 @@ class CodeGenerator():
 		elif(operador == "not"):
 			self.negacao()
 
-#ARITMÉTICAS
+
 	def adicao(self):
 		if(errors.has_errors()):
 			return
@@ -565,6 +559,7 @@ class CodeGenerator():
 
 		self.listaComandos.append("PARA")
 
+
 	def listaVariaveisRead(self, lista_de_variaveis):
 		if(errors.has_errors()):
 			return
@@ -617,21 +612,22 @@ class CodeGenerator():
 		for comando in self.listaComandos:
 			self.verifyConstValueOrder(comando)
 
-	def verifyConstValueOrder(self, command):
+	def verifyConstValueOrder(self, command): 
 		
 		print("\n\nEntrou na verificação com o comando: " + str(command))
 
-		#PRECEDÊNCIA
 		operations_that_order_matters = ["DIVI", "MODI","CMME","CMEG","CMMA","CMAG","CMIG","CMDG"]
 
 		if(command[0] in operations_that_order_matters):
 			command_index = self.listaComandos.index(command)
 
-			if(self.listaComandos[command_index - 1][0] == "CRVL" and self.listaComandos[command_index - 2][0] == "CRCT"): #se for um Carrega constante seguido de um carrega variavel
+
+			if(self.listaComandos[command_index - 1][0] == "CRVL" and self.listaComandos[command_index - 2][0] == "CRCT"): 
 				print("\n\nComandos na lista detalhada: " + str(self.listaComandos[command_index - 1][2]) +" "+ str(self.listaComandos[command_index - 2][2]))
-				if(self.listaComandos[command_index - 1][2] < self.listaComandos[command_index - 2][2]): #e se a variavel vem antes da constante
-																									#temos que inverter a ordem desses comandos
+				if(self.listaComandos[command_index - 1][2] < self.listaComandos[command_index - 2][2]): 
+																									
 					self.listaComandos[command_index - 1], self.listaComandos[command_index - 2] = self.listaComandos[command_index - 2], self.listaComandos[command_index - 1]
+
 
 					print("\n\nModificou com o comando: " + str(command))
 					print("\n\nLista pos modificada: " + str(self.listaComandos))

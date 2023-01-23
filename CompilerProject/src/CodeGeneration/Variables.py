@@ -1,55 +1,60 @@
-from abc import ABC
+from abc import ABC, abstractmethod
 
-# Infraestrutura parqa definir as caracteristicas das classes abstratas
+class Variavel(ABC):
+	def __init__(self, nome, endereco):
+		self.nome = nome #lexema
+		self.enderecoAlocacao = endereco
 
-class Variable(ABC):
-	def __init__(self, name, address):
-		self.name = name
-		self.addressAllocated = address
 
-	def getname(self):
-		return self.name
+	def getNome(self):
+		return self.nome
+	def setNome(self, nome):
+		self.nome = nome
 
-	def setname(self, name):
-		self.name = name
+	def getEnderecoAlocacao(self):
+		return self.enderecoAlocacao
 
-	def getAddressAllocated(self):
-		return self.addressAllocated
+	def setEnderecoAlocacao(self, endereco):
+		self.enderecoAlocacao = endereco
 
-	def setAddressAllocated(self, address):
-		self.addressAllocated = address
 
-class Integer(Variable):
-	def __init__(self, name, address, value):
-		super().__init__(name, address)
 
-		self.value = value
+class Integer(Variavel):
+	def __init__(self, nome, endereco, valor):
+		super().__init__(nome, endereco)
 
-	def getvalue(self):
-		return self.value
+		self.valor = valor
 
-	def setvalue(self, value):
-		self.value = value
 
-class Boolean(Variable):
-	def __init__(self, name, address, value):
-		super().__init__(name, address)
-		self.value = value
+	def getValor(self):
+		return self.valor
 
-	def getvalue(self):
-		return self.value
+	def setValor(self, valor):
+		self.valor = valor
 
-	def setvalue(self, value):
-		self.value = value
 
-class Float(Variable):
-	def __init__(self, name, address, value):
-		super().__init__(name, address)
 
-		self.value = float(value)
+class Boolean(Variavel):
+	def __init__(self, nome, endereco, valor):
+		super().__init__(nome, endereco)
 
-	def getvalue(self):
-		return self.value
+		self.valor = valor
 
-	def setvalue(self, value):
-		self.value = value
+
+	def getValor(self):
+		return self.valor
+
+	def setValor(self, valor):
+		self.valor = valor
+
+class Float(Variavel):
+	def __init__(self, nome, endereco, valor):
+		super().__init__(nome, endereco)
+
+		self.valor = float(valor)
+
+	def getValor(self):
+		return self.valor
+
+	def setValor(self, valor):
+		self.valor = valor
