@@ -7,14 +7,14 @@ class Errors(object):
 		return self._instance
 
 	def __init__(self):
-		self.ERROR_VARIAVEL_NAO_DECLARADA = "ERROR: variavel-nao-declarada"
-		self.ERROR_TIPO = "ERROR: tipo"
-		self.ERROR_VARIAVEL_JA_DECLARADA = "ERROR: variavel-ja-declarada"
-		self.ERROR_VARIAVEL_SEM_VALOR = "ERROR: variavel-sem-valor"
+		self.ERROR_VARIABLE_NO_EXIST = "ERROR: variavel-nao-declarada"
+		self.ERROR_TYPE = "ERROR: tipo"
+		self.ERROR_VARIABLE_EXIST = "ERROR: variavel-ja-declarada"
+		self.ERROR_VARIABLE_NO_VALUE = "ERROR: variavel-sem-valor"
 
 		self.errorList = []
 
-		self.WARNING_VARIAVEL_NAO_UTILIZADA = "WARNING: variavel-nao-utilizada"
+		self.WARNING_VARIABLE_WITHOUT_USE = "WARNING: variavel-nao-utilizada"
 		self.warningList = []
 
 

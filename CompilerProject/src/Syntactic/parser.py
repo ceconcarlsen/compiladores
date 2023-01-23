@@ -115,7 +115,7 @@ def createParser():
 
         for variavel in p[2]:
             v = scopes[-1].variableTable.insert(variavel, p[1], p.lineno(1),False, None)
-            if(v == errors.ERROR_VARIAVEL_JA_DECLARADA):
+            if(v == errors.ERROR_VARIABLE_EXIST):
                 error_message = "ERROR: A variavel '"+ str(variavel) +" ja foi declarada anteriormente - Linha: " + str(p.lineno(2))
                 print(error_message)
                 p_error(error_message)
@@ -249,14 +249,14 @@ def createParser():
         
         temp = scopes[-1].variableTable.modify(p[1], p[3])
 
-        if(temp == errors.ERROR_TIPO):
+        if(temp == errors.ERROR_TYPE):
             error_message = "ERROR: O valor atribuido a variável '"+ str(p[1]) +"' não é compatível com o seu tipo - Linha: " + str(p.lineno(1))
             
             #chama a função de erro
             p_error(error_message)
             #raise SyntaxError
             
-        elif(temp == errors.ERROR_VARIAVEL_NAO_DECLARADA):
+        elif(temp == errors.ERROR_VARIABLE_NO_EXIST):
             error_message = "ERROR: A variavel '" + str(p[1]) +"' não foi declarada - Linha: "+ str(p.lineno(1))
 
             p_error(error_message)
@@ -360,7 +360,7 @@ def createParser():
                 for variavel in lista_de_parametros:
                     if(isinstance(variavel, str)): 
                         v = scopes[-1].variableTable.search(variavel)
-                        if(v == errors.ERROR_VARIAVEL_NAO_DECLARADA):
+                        if(v == errors.ERROR_VARIABLE_NO_EXIST):
                             p_error("ERROR: A variavel '" + str(variavel) +"' não foi declarada - Linha: "+ str(p.lineno(1)))
                             #raise SyntaxError
                             IS_OK = False
@@ -397,7 +397,7 @@ def createParser():
                             try:
                                 value = scopes[-1].variableTable.get_value(parametro)
 
-                                if(value == errors.ERROR_VARIAVEL_NAO_DECLARADA):
+                                if(value == errors.ERROR_VARIABLE_NO_EXIST):
                                     p_error("ERROR: A variavel '" + str(parametro) +"' não foi declarada - Linha: "+ str(p.lineno(1)))
                                 
                                 else:
@@ -461,11 +461,11 @@ def createParser():
                 codeGenerator.carregaValorDaVariavel(p[1], p.lexpos(1))
                 v1 = scopes[-1].variableTable.get_value(p[1])
                 
-                if(v1 == errors.ERROR_VARIAVEL_SEM_VALOR): #caso a variavel nao tenha valor - Erro
+                if(v1 == errors.ERROR_VARIABLE_NO_VALUE): #caso a variavel nao tenha valor - Erro
                     p_error("ERROR: A variavel '" + p[1] + "' não tem valor definido - Linha: " + str(p.lineno(1)))
                     p[1] = -10000
                     #raise SyntaxError
-                elif(v1 == errors.ERROR_VARIAVEL_NAO_DECLARADA):
+                elif(v1 == errors.ERROR_VARIABLE_NO_EXIST):
                     p_error("ERROR: A variavel '" + str(p[1]) +"' não foi declarada - Linha: "+ str(p.lineno(1)))
                     p[1] = -10000
                     #raise SyntaxError
@@ -480,11 +480,11 @@ def createParser():
                 codeGenerator.carregaValorDaVariavel(p[3], p.lexpos(3))
                 v2 = scopes[-1].variableTable.get_value(p[3])
                 
-                if(v2 == errors.ERROR_VARIAVEL_SEM_VALOR): #caso a variavel nao tenha valor - Erro
+                if(v2 == errors.ERROR_VARIABLE_NO_VALUE): #caso a variavel nao tenha valor - Erro
                     p_error("ERROR: A variavel '" + p[3] + "' não tem valor definido - Linha: " + str(p.lineno(3)))
                     p[3] = -10000
                     #raise SyntaxError
-                elif(v2 == errors.ERROR_VARIAVEL_NAO_DECLARADA):
+                elif(v2 == errors.ERROR_VARIABLE_NO_EXIST):
                     p_error("ERROR: A variavel '" + str(p[3]) +"' não foi declarada - Linha: "+ str(p.lineno(3)))
                     p[3] = -10000 #recebe o "endereço de memoria"
                     #raise SyntaxError
@@ -560,11 +560,11 @@ def createParser():
             if(isinstance(p[1], str)):  #CASO P[1] ESTEJA SE REFERINDO AO NOME DE UMA VARIAVEL, PEGAMOS SEU VALOR PARA REALIZAR O CALCULO
                 codeGenerator.carregaValorDaVariavel(p[1], p.lexpos(1))
                 v1 = scopes[-1].variableTable.get_value(p[1])
-                if(v1 == errors.ERROR_VARIAVEL_SEM_VALOR): #caso a variavel nao tenha valor - Erro
+                if(v1 == errors.ERROR_VARIABLE_NO_VALUE): #caso a variavel nao tenha valor - Erro
                     p_error("ERROR: A variavel '" + str(p[1]) + "' não tem valor definido - Linha: " + str(p.lineno(1)))
                     p[1] = -10000
                     #rai se SyntaxError
-                elif(v1 == errors.ERROR_VARIAVEL_NAO_DECLARADA):
+                elif(v1 == errors.ERROR_VARIABLE_NO_EXIST):
                     p_error("ERROR: A variavel '" + str(p[1]) +"' não foi declarada - Linha: "+ str(p.lineno(1)))
                     p[1] = -10000
                     #raise SyntaxError
@@ -577,11 +577,11 @@ def createParser():
             if(isinstance(p[3], str)):  #O MESMO QUE PRO P[1]
                 codeGenerator.carregaValorDaVariavel(p[3], p.lexpos(3))
                 v2 = scopes[-1].variableTable.get_value(p[3])
-                if(v2 == errors.ERROR_VARIAVEL_SEM_VALOR): #caso a variavel nao tenha valor - Erro
+                if(v2 == errors.ERROR_VARIABLE_NO_VALUE): #caso a variavel nao tenha valor - Erro
                     p_error("ERROR: A variavel '" + p[3] + "' não tem valor definido - Linha: " + str(p.lineno(3)))
                     p[3] = -10000
                     #raise SyntaxError
-                elif(v2 == errors.ERROR_VARIAVEL_NAO_DECLARADA):
+                elif(v2 == errors.ERROR_VARIABLE_NO_EXIST):
                     p_error("ERROR: A variavel '" + str(p[3]) +"' não foi declarada - Linha: "+ str(p.lineno(3)))
                     p[3] = -10000
                     #raise SyntaxError
@@ -627,11 +627,11 @@ def createParser():
                 codeGenerator.carregaValorDaVariavel(p[1], p.lexpos(1))
                 v1 = scopes[-1].variableTable.get_value(p[1])
                 
-                if(v1 == errors.ERROR_VARIAVEL_SEM_VALOR): #caso a variavel nao tenha valor - Erro
+                if(v1 == errors.ERROR_VARIABLE_NO_VALUE): #caso a variavel nao tenha valor - Erro
                     p_error("ERROR: A variavel '" + p[1] + "' não tem valor definido - Linha: " + str(p.lineno(1)))
                     p[1] = -10000
                     #raise SyntaxError
-                elif(v1 == errors.ERROR_VARIAVEL_NAO_DECLARADA):
+                elif(v1 == errors.ERROR_VARIABLE_NO_EXIST):
                     p_error("ERROR: A variavel '" + str(p[1]) +"' não foi declarada - Linha: "+ str(p.lineno(1)))
                     p[3] = -10000
                     #raise SyntaxError
@@ -645,11 +645,11 @@ def createParser():
                 codeGenerator.carregaValorDaVariavel(p[3], p.lexpos(3))
                 v2 = scopes[-1].variableTable.get_value(p[3])
                 
-                if(v2 == errors.ERROR_VARIAVEL_SEM_VALOR): #caso a variavel nao tenha valor - Erro
+                if(v2 == errors.ERROR_VARIABLE_NO_VALUE): #caso a variavel nao tenha valor - Erro
                     p_error("ERROR: A variavel '" + p[3] + "' não tem valor definido - Linha: " + str(p.lineno(3)))
                     p[3] = -10000
                     #raise SyntaxError
-                elif(v2 == errors.ERROR_VARIAVEL_NAO_DECLARADA):
+                elif(v2 == errors.ERROR_VARIABLE_NO_EXIST):
                     p_error("ERROR: A variavel '" + str(p[3]) +"' não foi declarada - Linha: "+ str(p.lineno(3)))
                     p[3] = -10000
                     #raise SyntaxError
