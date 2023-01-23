@@ -85,7 +85,7 @@ class myLexer(object):
 		}
 
 		#PALAVRAS-RESERVADAS
-		reserved = {
+	reserved = {
 			'program': 'PROGRAM',
 			'begin': 'BEGIN',
 			'end': 'END',
@@ -103,12 +103,11 @@ class myLexer(object):
 			'else': 'ELSE',
 			'while': 'WHILE',
 			'do': 'DO',
-			'div': 'DIV',
+			'div': 'DIV', #divisao
 			'and': 'AND',
 			'or': 'OR',
 			'not': 'NOT',
 		}
-
 	# DEFININDO PARAMETROS DO ANALISADOR LEXICO
 	tokens = [
 		'NUM_REAL',					

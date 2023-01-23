@@ -1,14 +1,9 @@
-from PyQt5 import QtCore, QtGui, QtWidgets
-
+from PyQt5 import QtWidgets
 from Syntactic.Errors import *
-
 from CodeGeneration.CodeGeneration import *
 
 codeGenerator = CodeGenerator()
-
-import time
 errors = Errors()
-
 readFile = 'ReadWrite-Files/read.txt'
 writeFile = 'ReadWrite-Files/writeInterpreter.txt'
 
@@ -22,26 +17,18 @@ class Interpreter:
 
 	def __init__(self):
 		self.text = ""
-		self.code = [] #lista
-		self.stack = [] #pilha
+		self.code = [] #LISTA
+		self.stack = [] #PILHA
 
 		self.instructionCounter = 0;
 
 		self.incrementFlag = True
 		self.stopFlag = False
 
-
-		#Contador de leitura 
-		#self.leit_count = 0
-
-		#Lista para ser printada 
 		self.print_list = ""
 
-
-		#Inicializando arquivo
 		with open(writeFile, "w") as f:
 			f.write("")
-
 
 	def setStack(self, stack):
 		self.stack = stack
@@ -64,9 +51,7 @@ class Interpreter:
 	def setInstructionCounter(self, counter):
 		self.instructionCounter = counter
 
-
 	def readFile(self, path):
-		##resetando configuracoes
 		self.code = []
 		self.text = ""
 		with open(writeFile, "w") as f:
@@ -83,19 +68,11 @@ class Interpreter:
 				self.text = self.text + parte + " "
 			self.text = self.text + "\n"
 
-
-
 	def execute(self, window):
-
-		#self.revise()
-
-
 		self.instructionCounter = 0;
 
 		self.incrementFlag = True
 		self.stopFlag = False
-
-		#self.leit_count = 0
 
 		self.print_list = ""
 
@@ -104,8 +81,7 @@ class Interpreter:
 		print("\n\n\nCODIGO: \n\n" + str(self.code))
 		while(self.instructionCounter < len(self.code)):
 			try:
-
-				command = self.code[self.instructionCounter] #lista de comandos
+				command = self.code[self.instructionCounter] #COMANDOS
 
 				print(str(command) + " Contador: " + str(self.instructionCounter) + "\n")
 
@@ -125,30 +101,17 @@ class Interpreter:
 			except Exception as e:
 				print("ERROR: Execution Error: " + str(e))
 
-		 
-
 	def interpreta(self, command, window):
-		#CASO FOR LER PELO ARQUIVO TIRAR COMENTARIO DAS LINHAS ABAIXO ATE A SEPARACAO
-
-		# leit_list = None
-
-		# with open(readFile, "r") as f:
-		# 	leit_list = f.read().split(" ")
-
-		#=============================================
-		
-		#print(command[0] + "\n")
-
-
-		if(command[0] == "CRCT"): #CARREGA CONSTANTE
+		if(command[0] == "CRCT"): #CONSTANTE
 			self.stack.append(int(command[1]))
 
-		elif(command[0] == "CRVL"): #CARREGA VALOR DE VARIAVEL
+		elif(command[0] == "CRVL"): #VALOR DE VARIAVEL
 			self.stack.append(self.stack[int(command[1])])
 
 		elif(command[0] == "ARMZ"): #ARMAZENA
 			self.stack[int(command[1])] = self.stack.pop()
 
+		#VERIFICA COMANDO
 		elif(command[0] == "SOMA"):
 			a = self.stack.pop()
 			b = self.stack.pop()
@@ -173,7 +136,6 @@ class Interpreter:
 			except ZeroDivisionError:
 				errors.add_error("ERROR: Zero Division")
 				self.stack.append(-100000)
-
 
 		elif(command[0] == "MODI"): #DIVISAO INTEIRA
 			a = self.stack.pop()
@@ -214,7 +176,7 @@ class Interpreter:
 			
 			self.stack.append(1 - a)
 			
-		elif(command[0] == "CMME"): #COMPARA SE MENOR
+		elif(command[0] == "CMME"): #SE MENOR
 			a = self.stack.pop()
 			b = self.stack.pop()
 
@@ -223,7 +185,7 @@ class Interpreter:
 			else:
 				self.stack.append(0)
 
-		elif(command[0] == "CMEG"):#COMPARA SE MENOR OU IGUAL
+		elif(command[0] == "CMEG"):#SE MENOR IGUAL
 			a = self.stack.pop()
 			b = self.stack.pop()
 
@@ -232,7 +194,7 @@ class Interpreter:
 			else:
 				self.stack.append(0)
 
-		elif(command[0] == "CMMA"): #COMPARA SE MAIOR
+		elif(command[0] == "CMMA"): #SE MAIOR
 			a = self.stack.pop()
 			b = self.stack.pop()
 
@@ -242,7 +204,7 @@ class Interpreter:
 				self.stack.append(0)
 
 		
-		elif(command[0] == "CMAG"): #COMPARA SE MAIOR OU IGUAL
+		elif(command[0] == "CMAG"): #SE MAIOR OU IGUAL
 			a = self.stack.pop()
 			b = self.stack.pop()
 
@@ -251,7 +213,7 @@ class Interpreter:
 			else:
 				self.stack.append(0)
 
-		elif(command[0] == "CMIG"): #COMPARA SE IGUAL
+		elif(command[0] == "CMIG"): #SE IGUAL
 
 			a = self.stack.pop()
 			b = self.stack.pop()
@@ -261,7 +223,7 @@ class Interpreter:
 			else:
 				self.stack.append(0)
 
-		elif(command[0] == "CMDG"): #COMPARA SE DESIGUAL
+		elif(command[0] == "CMDG"): #SE DESIGUAL
 			a = self.stack.pop()
 			b = self.stack.pop()
 
@@ -274,45 +236,34 @@ class Interpreter:
 			self.instructionCounter = int(command[1])
 			self.incrementFlag = False
 
-		elif(command[0] == "DSVF"): #DESVIO VERDADEIRO FALSO
+		elif(command[0] == "DSVF"): #DESVIO VERDADEIRO/FALSO
 			a = self.stack.pop()
 
 			if(a == 0):
 				self.instructionCounter = int(command[1])
 				self.incrementFlag = False
 
-		elif(command[0] == "NADA"): #faz nada
+		elif(command[0] == "NADA"): #AÇÃO INERTE
 			pass
 
-		elif(command[0] == "LEIT"): # LEITURA DE INTEIRO - TALVEZ COLOCAR UMA JANELA PARA INTRODUZIR VALOR - POR ENQUANTO FAZEMOS PELO ARQUIVO
+		elif(command[0] == "LEIT"): #INT
 			number, confirmed = QtWidgets.QInputDialog.getInt(window, 'Input', 'Digite um inteiro: ')
 			self.stack.append(number)
 
-			# a = int(leit_list[self.leit_count])
-			# self.leit_count = self.leit_count + 1
-
-			# self.stack.append(a)
-
-		elif(command[0] == "LEICH"): # LEITURA DE CHAR - TALVEZ COLOCAR UMA JANELA PARA INTRODUZIR VALOR - POR ENQUANTO FAZEMOS PELO ARQUIVO
+		elif(command[0] == "LEICH"): #CHAR
 			character, confirmed = QtWidgets.QInputDialog.getInt(window, 'Input', 'Digite um char: ')
 			self.stack.append(chr(character))
-
-			# a = chr(leit_list[self.leit_count])
-			# self.leit_count = self.leit_count + 1
-
-			# self.stack.append(a)
 
 		elif(command[0] == "IMPR"):
 			a = int(self.stack.pop())
 
-			#imprimindo no arquivo
+			#IMPRIME ARQUIVO
 			with open(writeFile, "a") as f:
 				f.write(str(a) + " ")
 
-			#guardando para ser impresso na tela
+			#PARA IMPRIMIR NA TELA
 			self.print_list = self.print_list + str(a) + "\n"
 			
-
 		elif(command[0] == "IMPC"):
 			a = chr(self.stack.pop())
 
@@ -339,33 +290,3 @@ class Interpreter:
 
 		elif(command[0] == "PARA"):
 			self.stopFlag = True
-
-
-	#FUNCOES DE REVISAO CASO SEJA NECESSARIO REVISAR O CODIGO PRE INTERPRETACAO
-
-	# def revise(self):
-	# 	for command in self.code:
-	# 		self.verifyConstValueOrder(command)
-
-	# def verifyConstValueOrder(self, command): #funcao para corrigir o bug de ordem para operacoes com constante à esquerda ex: b/4
-		
-
-	# 	code_list_with_details = codeGenerator.getListaComandos() #essa lista é -1 em relação a lista presente no interpretador, entao qualquer
-	# 															  #uso de index tem que ser adicionado o -1
-
-	# 	operations_that_order_matters = ["DIVI", "MODI","CMME","CMEG","CMMA","CMAG","CMIG","CMDG"]
-
-	# 	if(command[0] in operations_that_order_matters):
-	# 		command_index = self.code.index(command)
-
-	# 		if(self.code[command_index - 1][0] == "CRVL" and self.code[command_index - 2][0] == "CRCT"): #se for um Carrega constante seguido de um carrega variavel
-	# 			if(code_list_with_details[command_index - 2][2] < code_list_with_details[command_index - 3][2]): #e se a variavel vem antes da constante
-	# 																								#temos que inverter a ordem desses comandos
-	# 				self.code[command_index - 1], self.code[command_index - 2] = self.code[command_index - 2], self.code[command_index - 1]
-
-
-		
-
-
-	
-	 
