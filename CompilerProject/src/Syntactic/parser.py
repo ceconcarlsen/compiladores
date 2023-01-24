@@ -31,8 +31,6 @@ from UI.MainWindow import *
 
 # 32 shift/reduce é o normal
 
-
-
 def createParser():  
 
     # ESTRUTURAS QUE CUIDAM DA ANALISE SEMANTICA 

@@ -1,6 +1,7 @@
 import ply.lex as lex
 import re
 
+#implementando com Singleton
 class myLexer(object):
 	_instance = None
 
@@ -16,28 +17,29 @@ class myLexer(object):
 		self.lexer = None
 
 		self.tokensExtenso = {
-		'REAL': 'TIPO REAL',						
-		'INT': 'TIPO INTEIRO', 						
-		'BOOLEAN': 'TIPO BOOLEANO',						
+		'REAL': 'TIPO REAL',						#TIPO REAL
+		'INT': 'TIPO INTEIRO', 						#TIPO INTEIRO
+		'BOOLEAN': 'TIPO BOOLEANO',						#VALOR BOOLEANO
 		'NUM_REAL': 'NUMERO REAL',
 		'NUM_INT': 'NUMERO INTEIRO',
-		'OPSOMA': 'OPERADOR SOMA',				
-		'OPSUB': 'OPERADOR SUBTRACAO', 				
-		'OPMUL': 'OPERADOR MULTIPLICACAO', 			
-		'OPDIV': 'OPERADOR DIVISAO', 				
-		'OPIGUAL_ATRIB': 'OPERADOR ATRIBUIÇÃO',		
-		'IGUAL': 'OPERADOR COMPARAÇÃO',		
+		'OPSOMA': 'OPERADOR SOMA',					#OPERADOR SOMA
+		'OPSUB': 'OPERADOR SUBTRACAO', 				#OPERADOR SUBTRACAO
+		'OPMUL': 'OPERADOR MULTIPLICACAO', 			#OPERADOR MULTIPLICACAO
+		'OPDIV': 'OPERADOR DIVISAO', 				#OPERADOR DIVISAO
+		'OPIGUAL_ATRIB': 'OPERADOR ATRIBUIÇÃO',		#OPERADOR DE IGUAL DE ATRIBUIÇÃO :=
+		'IGUAL': 'OPERADOR COMPARAÇÃO',		#OPERADOR DE IGUAL DE COMPARAÇÃO =
 		'DESIGUAL': 'OPERADOR DIFERENTE',
 		'MAIOR': 'OPERADOR MAIOR',
 		'MENOR': 'OPERADOR MENOR',
 		'MAIOR_IGUAL': 'OPERADOR MAIOR OU IGUAL',
 		'MENOR_IGUAL': 'OPERADOR MENOR OU IGUAL',
-		'AP': 'ABRE PARENTESES',    				
-		'ID': 'IDENTIFICADOR', 						
-		'PROGRAM': 'INICIO DO PROGRAMA',			
-		'BEGIN': 'INICIO DO BLOCO',					
-		'END': 'FIM DO BLOCO',						
-		'PROCEDURE': 'DECLARANDO PROCEDIMENTO',		
+		'AP': 'ABRE PARENTESES',    				#ABRE PARENTESES
+		'FP': 'FECHA PARENTESES',	 				#FECHA PARENTESES
+		'ID': 'IDENTIFICADOR', 						#IDENTIFICADOR
+		'PROGRAM': 'INICIO DO PROGRAMA',			#INICIO DO PROGRAMA
+		'BEGIN': 'INICIO DO BLOCO',					#INICIO DO BLOCO DE CODIGO
+		'END': 'FIM DO BLOCO',						#FIM DO BLOCO
+		'PROCEDURE': 'DECLARANDO PROCEDIMENTO',		#DECLARANDO PROCEDURE
 		'VAR': 'DECLARANDO VARIAVEL', 
 		'READ': 'COMANDO DE ENTRADA',
 		'WRITE': 'COMANDO DE SAIDA', 
@@ -59,6 +61,7 @@ class myLexer(object):
 		}
 
 		
+		# reserved words - to check if IDENTIFIERS are reserved or not
 		self.reserved = {
 			'program': 'PROGRAM',
 			'begin': 'BEGIN',
@@ -77,12 +80,12 @@ class myLexer(object):
 			'else': 'ELSE',
 			'while': 'WHILE',
 			'do': 'DO',
-			'div': 'DIV', 
+			'div': 'DIV', #divisao
 			'and': 'AND',
 			'or': 'OR',
 			'not': 'NOT',
 		}
-
+	#redeclaring
 	reserved = {
 			'program': 'PROGRAM',
 			'begin': 'BEGIN',
@@ -101,34 +104,36 @@ class myLexer(object):
 			'else': 'ELSE',
 			'while': 'WHILE',
 			'do': 'DO',
-			'div': 'DIV', 
+			'div': 'DIV', #divisao
 			'and': 'AND',
 			'or': 'OR',
 			'not': 'NOT',
 		}
-
-
+	# DEFININDO PARAMETROS DO ANALISADOR LEXICO
+	# listando os tokens
 	tokens = [
-		'NUM_REAL',					
-		'NUM_INT', 					
-		'OPSOMA',				
-		'OPSUB', 				
-		'OPMUL', 				
-		'OPDIV', 				
-		'OPIGUAL_ATRIB',		
-		'IGUAL',				
+		'NUM_REAL',					#NUMERO REAL
+		'NUM_INT', 					#NUMERO INTEIRO
+		'OPSOMA',				#OPERADOR SOMA
+		'OPSUB', 				#OPERADOR SUBTRACAO
+		'OPMUL', 				#OPERADOR MULTIPLICACAO
+		'OPDIV', 				#OPERADOR DIVISAO
+		'OPIGUAL_ATRIB',		#OPERADOR DE IGUAL DE ATRIBUIÇÃO :=
+		'IGUAL',				#OPERADOR DE IGUAL DE COMPARAÇÃO =
 		'DESIGUAL',
 		'MAIOR',
 		'MENOR',
 		'MAIOR_IGUAL',
 		'MENOR_IGUAL',
-		'FIM_LINHA',		
-		'SEPARADOR', 			
-		'PONTO_FINAL', 			
-		'DOIS_PONTOS',			
-		'AP',    				
-		'FP',	 				
-		'ID',               	
+		'FIM_LINHA',			#DELIMITADOR DE FIM DA LINHA ';'
+		'SEPARADOR', 			#SEPARADOR ','
+		'PONTO_FINAL', 			#DELIMITA FIM DO PROGRAMA '.'
+		'DOIS_PONTOS',			#":"
+		'AP',    				#ABRE PARENTESES
+		'FP',	 				#FECHA PARENTESES
+		#'PROGRAM',				#PALAVRA QUE INICIA O PROGRAMA
+		#'END', 					#PALAVRA QUE FINALIZA BLOCOS
+		'ID',               	#IDENTIFICADOR
 	] + list(reserved.values())
 
 	t_OPSOMA = r'\+'
@@ -153,12 +158,20 @@ class myLexer(object):
 
 	t_ignore = ' \t'
 
+	# RESERVADAS
+
+	#t_PROCEDURE = r'\bprocedure\b'
+	# t_INT = r'\bint\b'
+	# t_REAL = r'\breal\b'
+	# t_BOOLEAN = r'\bboolean\b'
+
+
 	def getTokens(self):
 		return self.tokens
 
 	def t_ID(self, t):
-		r'[a-zA-Z_][a-zA-Z_0-9]{0,50}' 
-		t.type = self.reserved.get(t.value,'ID')   
+		r'[a-zA-Z_][a-zA-Z_0-9]{0,50}'
+		t.type = self.reserved.get(t.value,'ID')
 		return t
 
 	def t_NUM_REAL(self, t):
@@ -167,7 +180,9 @@ class myLexer(object):
 		return t
 
 	def t_NUM_INT(self, t):
-		r'\d{1,40}' 
+		# r'[+-]?\d+'
+		#r'\d+' # 1 ou mais
+		r'\d{1,40}' #1 ate 40 digitos
 		try:
 			t.value = int(t.value)
 		except:
@@ -176,35 +191,50 @@ class myLexer(object):
 		return t
 
 
+
+	# CONTAGEM DE LINHAS E COLUNAS
+
+	# Contagem do numero de linhas, cada vez que aparecer uma quebra de linha, incrementamos o numero de linhas
 	def t_newline(self, t):
 		r'\n+'
 		t.lexer.lineno += len(t.value)
+		# depois de atualizar o numero da linha, damos um '\n' no output para separar por linhas
 		self.output = self.output + "\nLINHA %d: \n" % t.lexer.lineno
 		
+	# Compute column.
+	# input is the input text string
+	# token is a token instance
 	def find_column(self, token):
 		line_start = self.input.rfind('\n', 0, token.lexpos) + 1
 		return (token.lexpos - line_start) + 1
 
+	# Comentarios
 	def t_COMMENT(self, t):
 		r'//.*|{[\s\S]*}'
 		pass
 
+	# Error handling
 	def t_error(self, t):
+		#caso seja diferente de um comentario
 		if(t.value != '{'):
 			self.output = self.output + "Caracter invalido '%s'" % t.value[0] + " - Linha %d " % t.lineno + " - Coluna %d \n" % self.find_column(t)
 		
+		#se for erro de comentario nao fechado
 		elif(t.value == '{'):
 			self.output = self.output + "Comentario iniciado e não finalizado - Linha %d " % t.lineno + " - Coluna %d \n" % self.find_column(t)
 		
+		#print(self.output)
 		if(self.textOutput != None):
 			self.textOutput.setText(self.output)
 		t.lexer.skip(1)
 
+	# Criando o analisador lexico
 	def build(self, **kwargs):
 		if(self.lexer == None):
 			self.lexer = lex.lex(module=self, **kwargs, debug=False)
 		return self.lexer
 
+	# usando analisador lexico
 	def use(self, text):
 		self.output = "LINHA 1: \n"
 		self.input = text
@@ -213,8 +243,9 @@ class myLexer(object):
 			if not token:
 				break
 			self.output = self.output + str(token.value) + " => " + str(self.tokensExtenso[token.type]) +"\n"
+		#print(self.output)
 
 		if(self.textOutput != None):
 			self.textOutput.setText(self.output)
 		self.output = ""
-
+		#print("\n")
